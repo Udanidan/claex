@@ -1,13 +1,10 @@
-<?php include_once "painel.php";
+<?php 
+include_once "Modulos/head.php";
+include_once "Modulos/header.php";
+include_once "Modulos/painel.php";
+include "../Back/Classes/Escola.php";
 
-include "database.php";
-
-function achar_salas($login){
-    global $db;
-    $stmt = $db->query("SELECT salas,cor FROM salas_aula WHERE salas_aula.username = '$login'");
-
-    return $stmt;
-}
+$user = new Escola();
 
 ?>
 <main>
@@ -28,13 +25,14 @@ function achar_salas($login){
         }
 
         if($login){
-            $infos = achar_salas($login);
-            
+
+            $infos = $user->achar_salas($login);
+
             while($salas = $infos->fetch_assoc()){
                 ?>
                 <a href="grade.php?sala=<?php echo $salas['salas']; ?>">
                     <article class="caixa_sala <?php echo $salas['cor']; ?>">
-                        <?php echo "<p>". $salas['salas']. "</p>"; ?>
+                        <?php echo "<p>". $salas['salas'] ."</p>"; ?>
                     </article>
                 </a>
                 <?php

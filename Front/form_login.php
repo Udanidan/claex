@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <title>CLAEX</title>
-</head>
+<?php include_once "Modulos/head.php"; ?>
 <body>
     <main>
         <?php
@@ -24,11 +17,11 @@
             </article>
             <article class="flex_colunm">
                 <h1>CLAEX</h1>
-                <?php
-                    if ($tipo_form != 'entrar'){
-                        ?>
+
+                <?php if ($tipo_form != 'entrar'){ ?>
+
                     <!-- Login -->
-                <form id="formulario_login" action="login.php" method="post">
+                <form id="formulario_login" action="../Back/login.php" method="post">
                     <input type="text" name="login" id="login" placeholder="nome de usuraio">
                     <input type="password" name="senha" id="senha" placeholder="senha">
                     <?php
@@ -38,10 +31,13 @@
                         } unset($_SESSION['mensagem']); ?>
                     <input type="submit" class="submit" value="Entrar">
                 </form>
+
                 <p>Não possui uma conta? <a href="form_login.php?tipo=entrar">clique aqui</a></p>
-                <?php }else{ ?>
+                
+                <?php } else{ ?>
+
                     <!-- Cadastro -->
-                    <form id="formulario_login" action="cadastrar.php" method="post">
+                    <form id="formulario_login" action="../Back/cadastrar.php" method="post">
                         <input type="text" name="nome" id="nome" placeholder="nome">
                         <input type="text" name="email" id="email" placeholder="email">
                         <input type="password" name="senha" id="senha" placeholder="senha">
@@ -56,6 +52,7 @@
                         } unset($_SESSION['mensagem']); ?>
                         <input type="submit" class="submit" value="cadastrar">
                     </form>
+
                     <p>Possui uma conta? <a href="form_login.php?tipo=logar">clique aqui</a></p>
                 <?php } ?>
             </article>

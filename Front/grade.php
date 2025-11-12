@@ -1,7 +1,8 @@
 <?php
-include_once "header.php";
-include_once "painel.php";
-include "database.php";
+include_once "Modulos/head.php";
+include_once "Modulos/header.php";
+include_once "Modulos/painel.php";
+
 
     $sala = $_GET['sala'];
         session_start();

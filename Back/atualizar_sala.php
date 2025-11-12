@@ -18,4 +18,4 @@ function atualizar_sala($sala,$duracao_aula,$duracao_intervalo,$username){
     atualizar_sala($nome_sala,$duracao_aula,$duracao_intervalo,$login);
 
     $_SESSION['usuario'] = $login;
-    header('Location:listar_sala.php');
+    header('Location: ../Front/listar_sala.php');

@@ -1,5 +1,6 @@
 <?php 
-include_once "header.php"; 
+include_once "Modulos/header.php"; 
+include_once "Modulos/head.php"; 
 include_once "painel.php"; 
 
         session_start();
@@ -16,7 +17,7 @@ include_once "painel.php";
 <main>
     <section>
         <p>Nova sala</p>
-        <form action="nova_sala.php" method="post" id="form_nova_sala">
+        <form action="../front/nova_sala.php" method="post" id="form_nova_sala">
             <article class="flex_colunm">
                 <input type="hidden" name="login" value="<?php echo $login; ?>">
             <label>Nome da sala: <input type="text" name="nome_sala"></label><br>

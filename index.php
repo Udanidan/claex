@@ -1,10 +1,14 @@
-<?php include_once "header.php"; ?>
+<?php 
+include_once "Front/Modulos/head_index.php";
+include_once "Front/Modulos/header.php";
+?>
+
 
 <main>
     <section id="capa_index">
         <div>
             <h1>Organizar grades horarias nunca foi tão simples</h1>
-            <a href="form_login.php?tipo=entrar"><button class="botao_logar">Comece já!</button></a>
+            <a href="Front/form_login.php?tipo=entrar"><button class="botao_logar">Comece já!</button></a>
         </div>
         <img src="https://img.icons8.com/?size=100&id=TDMY9h1UHdNW&format=png&color=000000" alt="">
     </section>
@@ -51,4 +55,4 @@
 </main>
 
 
-<?php include_once "footer.php"; ?>
+<?php include_once "Front/Modulos/footer.php"; ?>
