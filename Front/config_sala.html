@@ -1,15 +1,17 @@
-<?php
-    // session_start();
-    include_once "Modulos/head.php";
-    include_once "Modulos/header.php";
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>claex</title>
+</head>
 
-    $sala = $_GET['sala'];
-    // $login = $_SESSION['usuario'];
-
-    // global $db;
-    // $a = mysqli_query($db,"SELECT nome_sala,duracao_aula,duracao_intervalo FROM salas_aula WHERE usarname='$login'");
-    // $a = mysqli_fetch_assoc($a);
-?>
+<header>
+    <img src="https://img.icons8.com/?size=100&id=8113&format=png&color=000000" width="30px" alt="menu">
+    
+    <a href="listar_sala.php?usuario=<?php echo $login; ?>"><img src="" alt="fotinha"></a>
+</header>
 
 <!-- <form action="../Back/atualizar_sala.php" method="post" id="form_nova_sala"> -->
     
@@ -30,3 +32,7 @@
     
     <input type="submit" value="atualizar sala">
 </form>
+
+<footer>
+    <p>Todos os direitos reservados</p>
+</footer>

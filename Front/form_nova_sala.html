@@ -1,18 +1,17 @@
-<?php 
-include_once "Modulos/head.php"; 
-include_once "Modulos/header.php"; 
-include_once "Modulos/painel.php"; 
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>claex</title>
+</head>
 
-        // session_start();
-        // if (isset($_SESSION['usuario'])){
-        //     $login = $_SESSION['usuario'];
-        // }
-        // else{
-        //     $login = null;
-        // }
-
-        // if($login){
-?>
+<header>
+    <img src="https://img.icons8.com/?size=100&id=8113&format=png&color=000000" width="30px" alt="menu">
+    
+    <a href="listar_sala.php?usuario=<?php echo $login; ?>"><img src="" alt="fotinha"></a>
+</header>
 
 <main>
     <section>
@@ -36,8 +35,6 @@ include_once "Modulos/painel.php";
     </section>
 </main>
 
-<?php
-        // }else{
-        //     echo "<h1>É necessario fazer login!</h1>";
-        // }
-?>
+<footer>
+    <p>Todos os direitos reservados</p>
+</footer>

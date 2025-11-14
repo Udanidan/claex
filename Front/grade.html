@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>claex</title>
+</head>
+
+<header>
+    <img src="https://img.icons8.com/?size=100&id=8113&format=png&color=000000" width="30px" alt="menu">
+    
+    <a href="listar_sala.php?usuario=<?php echo $login; ?>"><img src="" alt="fotinha"></a>
+</header>
+
+<section id="painel">
+    <img src="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/197/2024/12/centro-paula-souza.jpg" alt="">
+    <article>
+        <h1>Olá</h1>
+        <p>Professores: </p>
+        <p>salas: </p>
+    </article>
+</section>
+
+<main>
+    <div class="link_nova_sala">
+        <?php if(/*$nivel != 'escola'*/ false){ ?>
+        <div></div>
+        <?php }else{
+            ?><a href="config_sala.php?sala=<?php echo $sala; ?>"><button>configurações da sala</button></a><?php
+        } ?>
+        <h2><?php echo $sala; ?></h2>
+        <button onclick="alert('Essa função está em desenvolvimento')">alterar grade</button>
+    </div>
+    <section id="grade_aula">
+        <table>
+            <thead>
+                <th></th>
+                <th>segunda</th>
+                <th>terça</th>
+                <th>quarta</th>
+                <th>quinta</th>
+                <th>sexta</th>
+                <th>sabado</th>
+                <th>domingo</th>
+            </thead>
+            
+            <tbody>
+                <tr>
+                <td>8:00</td>
+                    <td>Portugues</td>
+                    <td>matematica</td>
+                    <td>matematica</td>
+                    <td>matematica</td>
+                    <td>historia</td>
+                    <td>ciencia</td>
+                    <td>ciencia</td>
+                </tr>
+                <tr>
+                <td>8:50</td>
+                    <td>Portugues</td>
+                    <td>matematica</td>
+                    <td>matematica</td>
+                    <td>matematica</td>
+                    <td>historia</td>
+                    <td>ciencia</td>
+                    <td>ciencia</td>
+                </tr>
+                <tr>
+                <td>10:00</td>
+                    <td>Portugues</td>
+                    <td>matematica</td>
+                    <td>matematica</td>
+                    <td>matematica</td>
+                    <td>historia</td>
+                    <td>ciencia</td>
+                    <td>ciencia</td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </section>
+</main>
+<footer>
+    <p>Todos os direitos reservados</p>
+</footer>

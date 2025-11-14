@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>claex</title>
+</head>
+
+<header>
+    <img src="https://img.icons8.com/?size=100&id=8113&format=png&color=000000" width="30px" alt="menu">
+    
+    <a href="listar_sala.php?usuario=<?php echo $login; ?>"><img src="" alt="fotinha"></a>
+</header>
+
+<section id="painel">
+    <img src="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/197/2024/12/centro-paula-souza.jpg" alt="">
+    <article>
+        <h1>Olá</h1>
+        <p>Professores: </p>
+        <p>salas: </p>
+    </article>
+</section>
+
+<main>
+    <div class="link_nova_sala">
+        <div style="width: 1px;"></div>
+        <h1 class="align-center">Escolha uma sala</h1>
+        <a href="form_nova_sala.php"><button>+ nova sala</button></a>
+    </div>
+    
+    <section id="salas_user">
+        <a href="grade.php?sala=sala 1">
+            <article class="caixa_sala vermelho">
+                <p>Sala 1</p>
+            </article>
+        </a>
+        <a href="grade.php?sala=sala 2">
+            <article class="caixa_sala vermelho">
+                <p>Sala 2</p>
+            </article>
+        </a>
+        <a href="grade.php?sala=sala 3">
+            <article class="caixa_sala vermelho">
+                <p>Sala 3</p>
+            </article>
+        </a>
+        <a href="grade.php?sala=sala 4">
+            <article class="caixa_sala vermelho">
+                <p>Sala 4</p>
+            </article>
+        </a>
+    </section>
+</main>
+<footer>
+    <p>Todos os direitos reservados</p>
+</footer>

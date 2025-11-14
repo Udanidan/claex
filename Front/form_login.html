@@ -1,15 +1,16 @@
-<?php include_once "Modulos/head.php"; ?>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>claex</title>
+</head>
+
 <body>
     <main>
-        <?php
-            session_start();
-            if (isset($_GET['tipo'])){
-                $tipo_form = $_GET['tipo'];
-            }
-            else{
-                $tipo_form = null;
-            }
-            ?>
+        
         <section id="sect_login">
             <article class="flex_colunm">
                 <img id="img_login" src="https://img.icons8.com/?size=100&id=TDMY9h1UHdNW&format=png&color=000000" alt="">
@@ -18,18 +19,14 @@
             <article class="flex_colunm">
                 <h1>CLAEX</h1>
 
-                <?php if ($tipo_form != 'entrar'){ ?>
+                
 
                     <!-- Login -->
                 <!-- <form id="formulario_login" action="../Back/login.php" method="post"> -->
                 <form id="formulario_login" action="listar_sala.php" method="post">
                     <input type="text" name="login" id="login" placeholder="nome de usuraio">
                     <input type="password" name="senha" id="senha" placeholder="senha">
-                    <?php
-                        if (isset($_SESSION['mensagem'])){
-                            $mensagem = $_SESSION['mensagem'];
-                            echo "<p style='color:red'>" . $mensagem . "</p>";
-                        } unset($_SESSION['mensagem']); ?>
+                    
                     <!-- <input type="submit" class="submit" value="Entrar"> -->
                     <input type="submit" class="submit" value="Entrar">
 
@@ -37,7 +34,7 @@
 
                 <p>Não possui uma conta? <a href="form_login.php?tipo=entrar">clique aqui</a></p>
                 
-                <?php } else{ ?>
+                
 
                     <!-- Cadastro -->
                     <!-- <form id="formulario_login" action="../Back/cadastrar.php" method="post"> -->
@@ -50,15 +47,11 @@
                             <option value="professor">Professor</option>
                             <option value="aluno">Aluno</option>
                         </select>
-                        <?php if (isset($_SESSION['mensagem'])){
-                            $mensagem = $_SESSION['mensagem'];
-                            echo "<p style='color:red'>" . $mensagem . "</p>";
-                        } unset($_SESSION['mensagem']); ?>
+                        
                         <input type="submit" class="submit" value="cadastrar">
                     </form>
 
                     <p>Possui uma conta? <a href="form_login.php?tipo=logar">clique aqui</a></p>
-                <?php } ?>
             </article>
         </section>
     </main>
