@@ -1,23 +1,23 @@
 <?php 
-include_once "Modulos/header.php"; 
 include_once "Modulos/head.php"; 
-include_once "painel.php"; 
+include_once "Modulos/header.php"; 
+include_once "Modulos/painel.php"; 
 
-        session_start();
-        if (isset($_SESSION['usuario'])){
-            $login = $_SESSION['usuario'];
-        }
-        else{
-            $login = null;
-        }
+        // session_start();
+        // if (isset($_SESSION['usuario'])){
+        //     $login = $_SESSION['usuario'];
+        // }
+        // else{
+        //     $login = null;
+        // }
 
-        if($login){
+        // if($login){
 ?>
 
 <main>
     <section>
         <p>Nova sala</p>
-        <form action="../front/nova_sala.php" method="post" id="form_nova_sala">
+        <form action="listar_sala.php" method="post" id="form_nova_sala">
             <article class="flex_colunm">
                 <input type="hidden" name="login" value="<?php echo $login; ?>">
             <label>Nome da sala: <input type="text" name="nome_sala"></label><br>
@@ -37,7 +37,7 @@ include_once "painel.php";
 </main>
 
 <?php
-        }else{
-            echo "<h1>É necessario fazer login!</h1>";
-        }
+        // }else{
+        //     echo "<h1>É necessario fazer login!</h1>";
+        // }
 ?>

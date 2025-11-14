@@ -5,20 +5,21 @@ include_once "Modulos/painel.php";
 
 
     $sala = $_GET['sala'];
-        session_start();
-        if (isset($_SESSION['usuario'])){
-            $login = $_SESSION['usuario'];
-            $nivel = $_SESSION['nivel'];
-        }
-        else{
-            $login = null;
-        }
 
-        if($login){
+        // session_start();
+        // if (isset($_SESSION['usuario'])){
+        //     $login = $_SESSION['usuario'];
+        //     $nivel = $_SESSION['nivel'];
+        // }
+        // else{
+        //     $login = null;
+        // }
+
+        // if($login){
 ?>
 <main>
     <div class="link_nova_sala">
-        <?php if($nivel != 'escola'){ ?>
+        <?php if(/*$nivel != 'escola'*/ false){ ?>
         <div></div>
         <?php }else{
             ?><a href="config_sala.php?sala=<?php echo $sala; ?>"><button>configurações da sala</button></a><?php
@@ -40,7 +41,38 @@ include_once "Modulos/painel.php";
             </thead>
             
             <tbody>
+                <tr>
+                <td>8:00</td>
+                    <td>Portugues</td>
+                    <td>matematica</td>
+                    <td>matematica</td>
+                    <td>matematica</td>
+                    <td>historia</td>
+                    <td>ciencia</td>
+                    <td>ciencia</td>
+                </tr>
+                <tr>
+                <td>8:50</td>
+                    <td>Portugues</td>
+                    <td>matematica</td>
+                    <td>matematica</td>
+                    <td>matematica</td>
+                    <td>historia</td>
+                    <td>ciencia</td>
+                    <td>ciencia</td>
+                </tr>
+                <tr>
+                <td>10:00</td>
+                    <td>Portugues</td>
+                    <td>matematica</td>
+                    <td>matematica</td>
+                    <td>matematica</td>
+                    <td>historia</td>
+                    <td>ciencia</td>
+                    <td>ciencia</td>
+                </tr>
                 <?php
+                /*
                 global $db;
                 $grade_segunda = mysqli_query($db,"SELECT professor,materia,sala FROM aulas WHERE sala = '$sala' and username = '$login' and dias = 'segunda'");
                 $grade_terca = mysqli_query($db,"SELECT professor,materia,sala FROM aulas WHERE sala = '$sala' and username = '$login' and dias = 'terca'");
@@ -159,7 +191,9 @@ include_once "Modulos/painel.php";
                         }else{
                             echo "--";
                         }
-                 } ?>
+                 }
+                */ 
+                ?>
                 </td>
                 
             </tbody>
@@ -167,7 +201,8 @@ include_once "Modulos/painel.php";
     </section>
 </main>
 <?php
-        }else{
-            echo "<h1>É necessario fazer login!</h1>";
-        }
+
+//        }else{
+  //          echo "<h1>É necessario fazer login!</h1>";
+    //    }
 ?>
