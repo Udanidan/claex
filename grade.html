@@ -24,12 +24,8 @@
 
 <main>
     <div class="link_nova_sala">
-        <?php if(/*$nivel != 'escola'*/ false){ ?>
-        <div></div>
-        <?php }else{
-            ?><a href="config_sala.php?sala=<?php echo $sala; ?>"><button>configurações da sala</button></a><?php
-        } ?>
-        <h2><?php echo $sala; ?></h2>
+        <a href="config_sala.php?sala=<?php echo $sala; ?>"><button>configurações da sala</button></a>
+        <h2>Sala 1</h2>
         <button onclick="alert('Essa função está em desenvolvimento')">alterar grade</button>
     </div>
     <section id="grade_aula">
