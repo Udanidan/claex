@@ -2,15 +2,63 @@
 include_once "Front/Modulos/head_index.php";
 include_once "Front/Modulos/header.php";
 ?>
+<div id="side-menu">
+    <div class="bars">
+        <div class="menu-bar"></div>
+        <div class="menu-bar"></div>
+        <div class="menu-bar"></div>
+    </div>
 
+    <a href="index.php" class="side-link">🏠 Início</a>
+    <a href="Front/Modulos/form_login.php?tipo=entrar" class="side-link">🔑 Login</a>
+    <a href="Front/Modulos/listar_sala.php" class="side-link">📚 Salas</a>
+    <a href="Front/Modulos/form_nova_sala.php" class="side-link">forma sala</a>
+    <script>
+const bars = document.querySelector(".bars");
+const menu = document.querySelector("#side-menu");
+
+bars.addEventListener("click", () => {
+    menu.classList.toggle("open");
+});
+</script>
+</div>
 
 <main>
-    <section id="capa_index">
-        <div>
-            <h1>Organizar grades horarias nunca foi tão simples</h1>
-            <a href="Front/form_login.php?tipo=entrar"><button class="botao_logar">Comece já!</button></a>
+     <section id="carousel-container">
+        <div class="carousel-track">
+            
+            <article class="carousel-slide">
+                <div class="slide-content">
+                    <h1>Organizar grades horarias nunca foi tão simples</h1>
+                    <a href="form_login.php?tipo=entrar"><button class="botao_logar">Comece já!</button></a>
+                </div>
+                <img src="https://img.icons8.com/?size=100&id=TDMY9h1UHdNW&format=png&color=000000" alt="Imagem Slide 1">
+            </article>
+
+            <article class="carousel-slide slide-2">
+                <div class="slide-content">
+                    <h1>Visualize sua Grade de Aulas</h1>
+                    <p>Veja em tempo real o que está acontecendo na sala e as matérias do dia.</p>
+                </div>
+                <img src="https://cdn.discordapp.com/attachments/1124738004121026631/1438179210014232586/Captura_de_tela_2025-07-20_221751.png?ex=6915f043&is=69149ec3&hm=4989a10136e49145d7bb23043d59d89869800c254e2b0909e32863a0f4e97823&" alt="Imagem Slide 2">
+            </article>
+            
+            <article class="carousel-slide slide-3">
+                <div class="slide-content">
+                    <h1>Configure Sua Sala Facilmente</h1>
+                    <p>Defina a duração da aula e do intervalo em poucos cliques.</p>
+                </div>
+                <img src="https://placehold.co/300x300/5765ff/ffffff?text=Config+Exemplo" alt="Imagem Slide 3">
+            </article>
+
         </div>
-        <img src="https://img.icons8.com/?size=100&id=TDMY9h1UHdNW&format=png&color=000000" alt="">
+        
+        <div class="carousel-dots">
+            <span class="dot active" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+
     </section>
     <section>
         <h1 class="align_center">como funciona</h1>
