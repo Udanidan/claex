@@ -101,6 +101,6 @@ bars.addEventListener("click", () => {
         </section>
     </section>
 </main>
-
+<script src="teste_carroseu.js"></script>
 
 <?php include_once "Front/Modulos/footer.php"; ?>
