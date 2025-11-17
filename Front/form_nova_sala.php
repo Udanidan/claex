@@ -2,7 +2,7 @@
 include_once "Modulos/head.php"; 
 include_once "Modulos/header.php"; 
 include_once "Modulos/painel.php"; 
-
+include_once "Modulos/menu.php";
 // session_start();
 if (isset($_SESSION['usuario'])){
     $login = $_SESSION['usuario'];
