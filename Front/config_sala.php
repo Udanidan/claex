@@ -2,6 +2,7 @@
     // session_start();
     include_once "Modulos/head.php";
     include_once "Modulos/header.php";
+    include_once "Modulos/menu.php";
 
     $sala = $_GET['sala'];
     $login = $_SESSION['usuario'];
