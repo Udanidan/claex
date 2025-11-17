@@ -5,7 +5,7 @@
         <div class="menu-bar"></div>
     </div>
 
-    <a href="index.php" class="side-link">🏠 Início</a>
+    <a href="Front/Modulos/index.php" class="side-link">🏠 Início</a>
     <a href="form_login.php?tipo=entrar" class="side-link">🔑 Login</a>
     <a href="listar_sala.php" class="side-link">📚 Salas</a>
     <a href="form_nova_sala.php" class="side-link">forma sala</a>
