@@ -1,27 +1,9 @@
 <?php 
 include_once "Front/Modulos/head_index.php";
 include_once "Front/Modulos/header.php";
+include_once "Front/Modulos/menu.php";
 ?>
-<div id="side-menu">
-    <div class="bars">
-        <div class="menu-bar"></div>
-        <div class="menu-bar"></div>
-        <div class="menu-bar"></div>
-    </div>
 
-    <a href="index.php" class="side-link">🏠 Início</a>
-    <a href="Front/form_login.php?tipo=entrar" class="side-link">🔑 Login</a>
-    <a href="Front/listar_sala.php" class="side-link">📚 Salas</a>
-    <a href="Front/form_nova_sala.php" class="side-link">forma sala</a>
-    <script>
-const bars = document.querySelector(".bars");
-const menu = document.querySelector("#side-menu");
-
-bars.addEventListener("click", () => {
-    menu.classList.toggle("open");
-});
-</script>
-</div>
 
 <main>
      <section id="carousel-container">
