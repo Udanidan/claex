@@ -44,5 +44,31 @@ class Escola extends Usuario{
         return false;
     }
 
+    // Converte o array com as aulas para uma matrix
+    public function converterMatrix($array, $aulasDia){
+        $matrix = [];
+        $cont = 0;
+        for($i=0; $i<7; $i++){
+            $matrix[$i] = [];
+            for($a=0; $a<$aulasDia; $a++){
+                if($cont >= count($array)){
+                    $matrix[$i][$a] = "--";
+                } else{
+                    $matrix[$i][$a] = $array[$cont];
+                }
+            }
+        }
+    }
+    public function mostrarGrade($matrix, $horaInicial, $duracao_aula, $aulasDia){
+        $cont = 0;
+        for($i=0;$i<$aulasDia;$i++){
+            echo "<tr> <td>" . ($horaInicial + ($duracao_aula * $cont)) . "</td>";
+            for($a=0;$a<6;$a++){
+                echo "<td>" . $matrix[$a][$i] . "</td>";
+            }
+            echo "</tr>";
+        }
+    }
+
 
 }

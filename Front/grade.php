@@ -3,23 +3,24 @@ include_once "Modulos/head.php";
 include_once "Modulos/header.php";
 include_once "Modulos/painel.php";
 
+include "../Back/Classes/Escola.php";
 
     $sala = $_GET['sala'];
 
         // session_start();
-        // if (isset($_SESSION['usuario'])){
-        //     $login = $_SESSION['usuario'];
-        //     $nivel = $_SESSION['nivel'];
-        // }
-        // else{
-        //     $login = null;
-        // }
+        if (isset($_SESSION['usuario'])){
+            $login = $_SESSION['usuario'];
+            $nivel = $_SESSION['nivel'];
+        }
+        else{
+            $login = null;
+        }
 
-        // if($login){
+        if($login){
 ?>
 <main>
     <div class="link_nova_sala">
-        <?php if(/*$nivel != 'escola'*/ false){ ?>
+        <?php if($nivel != 'escola'){ ?>
         <div></div>
         <?php }else{
             ?><a href="config_sala.php?sala=<?php echo $sala; ?>"><button>configurações da sala</button></a><?php
@@ -28,6 +29,37 @@ include_once "Modulos/painel.php";
         <button onclick="alert('Essa função está em desenvolvimento')">alterar grade</button>
     </div>
     <section id="grade_aula">
+
+        <table>
+            <thead>
+                <th></th>
+                <th>segunda</th>
+                <th>terça</th>
+                <th>quarta</th>
+                <th>quinta</th>
+                <th>sexta</th>
+                <th>sabado</th>
+                <th>domingo</th>
+            </thead>
+            
+            <tbody>
+                <?php
+                    $user = new Escola();
+
+                $user->mostrarGrade(
+                    [["a", "b", "c", "d","e","f","g"],
+                    ["h","i","j", "k","l","m","n"], 
+                    ["a", "b", "c", "d","e","f","g"], 
+                    ["a", "b", "jjj", "d","e","fjtjt","g"], 
+                    ["atry", "b", "c", "d","e","f","g"], 
+                    ["a", "b", "c", "dtr","e","f","g"],
+                    ["a", "bjr", "c", "d","e","f","g"],
+                    ["a", "bjr", "c", "d","e","f","g"],
+                    ["a", "bjr", "c", "d","e","f","g"]], 8,50,8);
+                ?>
+            </tbody>
+        </table>
+
         <table>
             <thead>
                 <th></th>
@@ -202,7 +234,7 @@ include_once "Modulos/painel.php";
 </main>
 <?php
 
-//        }else{
-  //          echo "<h1>É necessario fazer login!</h1>";
-    //    }
+       }else{
+           echo "<h1>É necessario fazer login!</h1>";
+       }
 ?>

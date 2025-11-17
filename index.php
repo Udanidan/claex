@@ -10,9 +10,9 @@ include_once "Front/Modulos/header.php";
     </div>
 
     <a href="index.php" class="side-link">🏠 Início</a>
-    <a href="Front/Modulos/form_login.php?tipo=entrar" class="side-link">🔑 Login</a>
-    <a href="Front/Modulos/listar_sala.php" class="side-link">📚 Salas</a>
-    <a href="Front/Modulos/form_nova_sala.php" class="side-link">forma sala</a>
+    <a href="Front/form_login.php?tipo=entrar" class="side-link">🔑 Login</a>
+    <a href="Front/listar_sala.php" class="side-link">📚 Salas</a>
+    <a href="Front/form_nova_sala.php" class="side-link">forma sala</a>
     <script>
 const bars = document.querySelector(".bars");
 const menu = document.querySelector("#side-menu");

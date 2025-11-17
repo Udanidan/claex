@@ -21,8 +21,7 @@
                 <?php if ($tipo_form != 'entrar'){ ?>
 
                     <!-- Login -->
-                <!-- <form id="formulario_login" action="../Back/login.php" method="post"> -->
-                <form id="formulario_login" action="listar_sala.php" method="post">
+                <form id="formulario_login" action="../Back/login.php" method="post">
                     <input type="text" name="login" id="login" placeholder="nome de usuraio">
                     <input type="password" name="senha" id="senha" placeholder="senha">
                     <?php
@@ -30,9 +29,7 @@
                             $mensagem = $_SESSION['mensagem'];
                             echo "<p style='color:red'>" . $mensagem . "</p>";
                         } unset($_SESSION['mensagem']); ?>
-                    <!-- <input type="submit" class="submit" value="Entrar"> -->
                     <input type="submit" class="submit" value="Entrar">
-
                 </form>
 
                 <p>Não possui uma conta? <a href="form_login.php?tipo=entrar">clique aqui</a></p>
@@ -40,8 +37,7 @@
                 <?php } else{ ?>
 
                     <!-- Cadastro -->
-                    <!-- <form id="formulario_login" action="../Back/cadastrar.php" method="post"> -->
-                    <form id="formulario_login" action="listar_sala.php" method="post">
+                    <form id="formulario_login" action="../Back/cadastrar.php" method="post">
                         <input type="text" name="nome" id="nome" placeholder="nome">
                         <input type="text" name="email" id="email" placeholder="email">
                         <input type="password" name="senha" id="senha" placeholder="senha">
