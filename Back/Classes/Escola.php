@@ -59,13 +59,32 @@ class Escola extends Usuario{
             }
         }
     }
-    public function mostrarGrade($matrix, $horaInicial, $duracao_aula, $aulasDia){
+    public function mostrarGrade($matrix, $horaInicial, $duracao_aula, $duracao_intervalo, $aulasDia){
         $cont = 0;
+        $minutosTotal = 0;
         for($i=0;$i<$aulasDia;$i++){
-            echo "<tr> <td>" . ($horaInicial + ($duracao_aula * $cont)) . "</td>";
-            for($a=0;$a<6;$a++){
+            if($cont > 0){
+                $minutosTotal += $duracao_aula;
+            }
+            if($cont > 0 && $cont % 2 == 0){
+                $minutosTotal += $duracao_intervalo;
+            }
+            $minutos = $minutosTotal %60;
+            
+            $horas = intdiv($minutosTotal,60) + $horaInicial;
+            if($horas < 10){
+                $horas = "0" . $horas;
+            }
+            if($minutos < 10){
+                $minutos = "0" . $minutos;
+            }
+
+            echo "<tr> <td>" . $horas . ":" . $minutos . "</td>";
+
+            for($a=0;$a<7;$a++){
                 echo "<td>" . $matrix[$a][$i] . "</td>";
             }
+            $cont++;
             echo "</tr>";
         }
     }

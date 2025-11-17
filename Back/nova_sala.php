@@ -30,11 +30,11 @@ require "Classes/Escola.php";
     session_start();
 
     if($user->cadastrar_sala($nome_sala,$duracao_aula,$duracao_intervalo,$login)){
-
+        $msg[0] = "Sala cadastrada com sucesso!";
         if($user->Cadastrar_materia($materia,$professor,$nome_sala,$login)){
-            
+            $msg[1] = "matéria(s) cadastrada(s) com sucesso!";
         }
-        $_SESSION["mensagem"] = "Sala cadastrada com sucesso!";
+        $_SESSION["mensagem"] = $msg;
         header('Location: ../front/listar_sala.php');
     }
 

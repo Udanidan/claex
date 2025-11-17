@@ -47,15 +47,14 @@ include "../Back/Classes/Escola.php";
                     $user = new Escola();
 
                 $user->mostrarGrade(
-                    [["a", "b", "c", "d","e","f","g"],
-                    ["h","i","j", "k","l","m","n"], 
-                    ["a", "b", "c", "d","e","f","g"], 
-                    ["a", "b", "jjj", "d","e","fjtjt","g"], 
-                    ["atry", "b", "c", "d","e","f","g"], 
-                    ["a", "b", "c", "dtr","e","f","g"],
-                    ["a", "bjr", "c", "d","e","f","g"],
-                    ["a", "bjr", "c", "d","e","f","g"],
-                    ["a", "bjr", "c", "d","e","f","g"]], 8,50,8);
+                    [["a", "b", "c", "d","e","f","g","h"],
+                    ["h","i","j", "k","l","m","n","o"], 
+                    ["a", "b", "c", "d","e","f","g","h"], 
+                    ["a", "b", "jjj", "d","e","fjtjt","g","h"], 
+                    ["atry", "b", "c", "d","e","f","g","h"], 
+                    ["a", "b", "c", "dtr","e","f","g","h"],
+                    ["a", "bjr", "c", "d","e","f","g","h"],
+                    ["a", "bjr", "c", "d","e","f","g","h"],], 8,50,20,8);
                 ?>
             </tbody>
         </table>
