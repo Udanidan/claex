@@ -22,7 +22,7 @@ include_once "Front/Modulos/menu.php";
                     <h1>Visualize sua Grade de Aulas</h1>
                     <p>Veja em tempo real o que está acontecendo na sala e as matérias do dia.</p>
                 </div>
-                <img src="https://cdn.discordapp.com/attachments/1124738004121026631/1438179210014232586/Captura_de_tela_2025-07-20_221751.png?ex=6915f043&is=69149ec3&hm=4989a10136e49145d7bb23043d59d89869800c254e2b0909e32863a0f4e97823&" alt="Imagem Slide 2">
+                <img src="file:///C:/Users/vinicius/Pictures/Screenshots/Captura%20de%20tela%202025-11-25%20081704.png" alt="Imagem Slide 2">
             </article>
             
             <article class="carousel-slide slide-3">
