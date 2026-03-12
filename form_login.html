@@ -10,6 +10,27 @@
 
 <body>
     <main>
+         <div id="side-menu">
+    <div class="bars">
+        <div class="menu-bar"></div>
+        <div class="menu-bar"></div>
+        <div class="menu-bar"></div>
+    </div>
+
+    <a href="Front/Modulos/index.html" class="side-link">🏠 Início</a>
+    <a href="form_login.html?tipo=entrar" class="side-link">🔑 Login</a>
+    <a href="listar_sala.html" class="side-link">📚 Salas</a>
+    <a href="form_nova_sala.html" class="side-link">forma sala</a>
+    <a href="config_sala.html" class="side-link">config sala</a>
+    <script>
+const bars = document.querySelector(".bars");
+const menu = document.querySelector("#side-menu");
+
+bars.addEventListener("click", () => {
+    menu.classList.toggle("open");
+});
+</script>
+</div>
         
         <section id="sect_login">
             <article class="flex_colunm">
