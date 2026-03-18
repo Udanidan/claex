@@ -6,64 +6,12 @@
     <link rel="stylesheet" href="css/style.css">
     <title>claex</title>
 </head>
+<body>
+    
+
 
 <header>
-
-    <div>
-        <a href="form_login.html"><button class="botao_logar">Login</button></a>
-        <a href="form_cadastro.html"><button class="botao_logar">Cadastre-se</button></a>
-    </div>
-</header>
-
-<main>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-    // ===== MENU LATERAL =====
-    const bars = document.querySelector(".bars");
-    const menu = document.querySelector("#side-menu");
-
-    if (bars && menu) {
-        bars.addEventListener("click", () => {
-            menu.classList.toggle("open");
-        });
-    }
-
-    // ===== CARROSSEL =====
-    let slideIndex = 0;
-    const track = document.querySelector('.carousel-track');
-    const slides = document.querySelectorAll('.carousel-slide');
-    const dots = document.querySelectorAll('.dot');
-
-    if (!track || slides.length === 0) return;
-
-    function showSlide(index) {
-        if (index >= slides.length) slideIndex = 0;
-        if (index < 0) slideIndex = slides.length - 1;
-
-        track.style.transform = `translateX(${-slideIndex * 100}%)`;
-
-        dots.forEach((dot, i) => {
-            dot.classList.toggle("active", i === slideIndex);
-        });
-    }
-
-    function nextSlide() {
-        slideIndex++;
-        showSlide(slideIndex);
-    }
-
-    window.currentSlide = function (n) {
-        slideIndex = n - 1;
-        showSlide(slideIndex);
-    };
-
-    showSlide(slideIndex);
-    setInterval(nextSlide, 4000);
-});
-</script>
-
-   
+     
     <div id="side-menu">
     <div class="bars">
         <div class="menu-bar"></div>
@@ -74,8 +22,8 @@ document.addEventListener("DOMContentLoaded", function () {
     <a href="Front/Modulos/index.html" class="side-link">🏠 Início</a>
     <a href="form_login.html?tipo=entrar" class="side-link">🔑 Login</a>
     <a href="listar_sala.html" class="side-link">📚 Salas</a>
-    <a href="form_nova_sala.html" class="side-link">forma sala</a>
-    <a href="config_sala.html" class="side-link">config sala</a>
+    <a href="form_nova_sala.html" class="side-link">➕forma sala</a>
+    <a href="config_sala.html" class="side-link">⚙️config sala</a>
     <script>
 const bars = document.querySelector(".bars");
 const menu = document.querySelector("#side-menu");
@@ -84,16 +32,47 @@ bars.addEventListener("click", () => {
     menu.classList.toggle("open");
 });
 </script>
-</div>
+    </div>
+    <img class="microscopico" src="https://img.icons8.com/?size=100&id=8113&format=png&color=000000" width="30px" alt="menu">
+
+    <div>
+        
+        <a href="form_login.html"><button class="botao_logar">Login</button></a>
+        <a href="form_cadastro.html"><button class="botao_logar">Cadastre-se</button></a>
+    </div>
+</header>
+
+<main>
+
+  
+
     <section id="capa_index">
-        <div>
+        <div class="hero-content">
             <h1>Organizar grades horarias nunca foi tão simples</h1>
             <a href="form_cadastro.html"><button class="botao_logar">Comece já!</button></a>
         </div>
+        <div class="hero-image">
         <img src="https://img.icons8.com/?size=100&id=TDMY9h1UHdNW&format=png&color=000000" alt="">
+        </div>
     </section>
-    <section>
-        <h1 class="align_center">como funciona</h1>
+    <section class="carousel-container">
+        <h2 class="align_center">Destaques</h2>
+        <div class="carousel">
+            <div class="carousel-track">
+                <div class="carousel-slide" style="background: #5765ff;"><h3>Otimização de Tempo</h3></div>
+                <div class="carousel-slide" style="background: #2c37b7;"><h3>Gestão de Conflitos</h3></div>
+                <div class="carousel-slide" style="background: #1a237e;"><h3>Relatórios Detalhados</h3></div>
+            </div>
+            <div class="carousel-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <h2 class="align_center">como funciona</h2>
         <section class="infos_claex">
             <article class="about_claex">
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus, corrupti possimus quis eligendi veniam repellendus facilis itaque ullam unde ab impedit nulla blanditiis asperiores sapiente ex explicabo aut assumenda tempore!</p>
@@ -115,8 +94,8 @@ bars.addEventListener("click", () => {
             </article>
         </section>
     </section>
-    <section>
-        <h1 class="align_center">Sobre nós</h1>
+    <section class="team-section">
+        <h2 class="align_center">Sobre nós</h2>
         <section class="infos_claex">
             <article class="about_us">
                 <img src="data:image/jpeg;base64,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" alt="">
@@ -136,9 +115,7 @@ bars.addEventListener("click", () => {
 
 <footer>
     <div class="footer-content">
-        <div class="footer-brand">
-            CLAEX
-        </div>
+        <div class="footer-brand">CLAEX</div>
         <div class="footer-links">
             <div class="footer-col">
                 <h4>Sobre</h4>
@@ -147,13 +124,51 @@ bars.addEventListener("click", () => {
             </div>
             <div class="footer-col">
                 <h4>Legal</h4>
-                <a href="#">Termos de Uso</a>
-                <a href="#">Política de Privacidade</a>
+                <a href="#">Privacidade</a>
+                <a href="#">Termos</a>
             </div>
         </div>
     </div>
     <div class="footer-bottom">
-        &copy; 2025 CLAEX. Todos os direitos reservados.
+        &copy; 2026 CLAEX. Todos os direitos reservados.
     </div>
-    <link rel="stylesheet" href="css/style.css">
 </footer>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // MENU LATERAL
+    const menuIcon = document.querySelector(".menu-icon");
+    const closeMenu = document.querySelector(".close-menu");
+    const sideMenu = document.querySelector("#side-menu");
+
+    menuIcon.addEventListener("click", () => sideMenu.classList.add("open"));
+    closeMenu.addEventListener("click", () => sideMenu.classList.remove("open"));
+
+    // CARROSSEL
+    const track = document.querySelector('.carousel-track');
+    const slides = Array.from(track.children);
+    const dots = document.querySelectorAll('.dot');
+    let index = 0;
+
+    function updateCarousel() {
+        track.style.transform = `translateX(-${index * 100}%)`;
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+    }
+
+    function nextSlide() {
+        index = (index + 1) % slides.length;
+        updateCarousel();
+    }
+
+    let interval = setInterval(nextSlide, 3000);
+
+    dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+            index = i;
+            updateCarousel();
+            clearInterval(interval);
+            interval = setInterval(nextSlide, 3000);
+        });
+    });
+});
+</script>
+</body>
