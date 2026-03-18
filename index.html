@@ -8,8 +8,7 @@
 </head>
 
 <header>
-    <img src="https://img.icons8.com/?size=100&id=8113&format=png&color=000000" width="30px" alt="menu">
-    
+
     <div>
         <a href="form_login.html"><button class="botao_logar">Login</button></a>
         <a href="form_cadastro.html"><button class="botao_logar">Cadastre-se</button></a>
@@ -17,13 +16,26 @@
 </header>
 
 <main>
-     <script>
+<script>
 document.addEventListener("DOMContentLoaded", function () {
 
+    // ===== MENU LATERAL =====
+    const bars = document.querySelector(".bars");
+    const menu = document.querySelector("#side-menu");
+
+    if (bars && menu) {
+        bars.addEventListener("click", () => {
+            menu.classList.toggle("open");
+        });
+    }
+
+    // ===== CARROSSEL =====
     let slideIndex = 0;
     const track = document.querySelector('.carousel-track');
     const slides = document.querySelectorAll('.carousel-slide');
     const dots = document.querySelectorAll('.dot');
+
+    if (!track || slides.length === 0) return;
 
     function showSlide(index) {
         if (index >= slides.length) slideIndex = 0;
@@ -47,12 +59,10 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     showSlide(slideIndex);
-
-    // AUTOPLAY
     setInterval(nextSlide, 4000);
-
 });
 </script>
+
    
     <div id="side-menu">
     <div class="bars">
