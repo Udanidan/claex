@@ -218,6 +218,7 @@ td{
     justify-content: space-evenly;
     flex-wrap: wrap;
     margin: 50px 0px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 @media screen and (max-width: 580px) {
     #sumir{
