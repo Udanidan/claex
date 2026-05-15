@@ -1,1610 +1,1021 @@
 /*
-    Estilo principal do site CLAEX
-    Versão: 3.0.0 - Redesign Completo
-    Última atualização: 2026
+    Estilo principal do site claex
+    Dev: udan
+    Versão: 1.0.0
+    Ultima data de alteração: 13/06/25
 */
 
-/* =====================
-   IMPORTS & VARIABLES
-   ===================== */
+/* Tags gerais */
 
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
-
-:root {
-    --primary: #5765ff;
-    --primary-dark: #2c37b7;
-    --primary-light: #7b86ff;
-    --primary-glow: rgba(87, 101, 255, 0.25);
-    --accent: #41e3ff;
-    --accent-soft: rgba(65, 227, 255, 0.15);
-    --bg: #f6f7ff;
-    --bg-white: #ffffff;
-    --bg-card: #ffffff;
-    --text-dark: #1a1d2e;
-    --text-mid: #4a4f6a;
-    --text-light: #8b90a7;
-    --border: #e8eaff;
-    --shadow-sm: 0 2px 8px rgba(87, 101, 255, 0.08);
-    --shadow-md: 0 8px 24px rgba(87, 101, 255, 0.12);
-    --shadow-lg: 0 20px 48px rgba(87, 101, 255, 0.18);
-    --radius-sm: 8px;
-    --radius-md: 14px;
-    --radius-lg: 22px;
-    --radius-xl: 32px;
-    --gradient: linear-gradient(135deg, var(--primary) 0%, #7b86ff 50%, var(--accent) 100%);
-    --gradient-dark: linear-gradient(135deg, #2c37b7, #5765ff);
+*{
+    margin: 0px;
 }
-
-/* =====================
-   RESET & BASE
-   ===================== */
-
-*, *::before, *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    background-color: var(--bg);
-    color: var(--text-dark);
-    overflow-x: hidden;
-    line-height: 1.6;
-}
-
-h1, h2, h3, h4 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    line-height: 1.2;
-}
-
-a {
-    text-decoration: none;
-    color: var(--primary);
-    transition: color 0.2s;
-}
-
-a:hover {
-    color: var(--primary-dark);
-}
-
-/* =====================
-   INPUTS & SELECTS
-   ===================== */
-
-input, select, textarea {
-    width: 100%;
-    height: 48px;
-    padding: 0 16px;
-    background-color: #f0f2fc;
-    border: 2px solid transparent;
-    border-radius: var(--radius-sm);
-    font-size: 0.95rem;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    color: var(--text-dark);
-    transition: all 0.25s ease;
-    appearance: none;
-}
-
-input::placeholder {
-    color: var(--text-light);
-}
-
-input:focus, select:focus {
-    outline: none;
-    border-color: var(--primary);
-    background-color: var(--bg-white);
-    box-shadow: 0 0 0 4px var(--primary-glow);
-}
-
-select {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238b90a7' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 16px center;
-    padding-right: 40px;
-    cursor: pointer;
-}
-
-label {
-    display: block;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--text-mid);
-    margin-bottom: 6px;
-    letter-spacing: 0.02em;
-}
-
-/* =====================
-   BUTTONS
-   ===================== */
-
-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    background-color: var(--primary);
-    border: 2px solid transparent;
-    border-radius: var(--radius-sm);
-    color: white;
-    height: 44px;
-    padding: 0 20px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    cursor: pointer;
-    transition: all 0.25s ease;
-    letter-spacing: 0.01em;
-}
-
-button:hover {
-    background-color: var(--primary-dark);
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-md);
-}
-
-.submit {
-    width: 100%;
-    max-width: 360px;
-    height: 52px;
-    background: var(--gradient);
-    color: white;
-    border: none;
-    border-radius: var(--radius-md);
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    margin-top: 16px;
-    transition: all 0.3s ease;
-    letter-spacing: 0.02em;
-    box-shadow: 0 4px 16px var(--primary-glow);
-}
-
-.submit:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 28px rgba(87, 101, 255, 0.4);
-}
-
-.btn-ghost {
-    background: transparent;
-    border: 2px solid var(--primary);
-    color: var(--primary);
-    border-radius: var(--radius-sm);
-}
-
-.btn-ghost:hover {
-    background: var(--primary);
-    color: white;
-}
-
-/* =====================
-   TABLE
-   ===================== */
-
-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    background-color: white;
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    box-shadow: var(--shadow-md);
-}
-
-thead th {
-    background: var(--gradient);
-    color: white;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    padding: 16px 20px;
-    font-weight: 700;
-    font-size: 0.8rem;
-    border: none;
-}
-
-thead th:first-child {
-    width: 90px;
-    background: var(--primary-dark);
-}
-
-tbody td {
-    padding: 14px 20px;
-    text-align: center;
-    border-bottom: 1px solid #f0f2ff;
-    color: var(--text-mid);
-    font-size: 0.88rem;
-    transition: background 0.2s;
-}
-
-tbody td:first-child {
-    font-weight: 700;
-    color: var(--primary);
-    background: #f5f6ff;
-    font-size: 0.85rem;
-}
-
-tbody tr:last-child td {
-    border-bottom: none;
-}
-
-tbody tr:hover td {
-    background-color: #f0f2ff;
-}
-
-tbody tr:hover td:first-child {
-    background-color: #e8eaff;
-}
-
-/* =====================
-   HEADER
-   ===================== */
-
-header {
+header{
+    background: var;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    height: 68px;
-    padding: 0 5%;
-    box-shadow: 0 1px 0 var(--border), var(--shadow-sm);
+    background-color: #5765ff;
+    height: 60px;
+    padding: 10px 5%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     position: sticky;
     top: 0;
     z-index: 1000;
+    
+    
 }
-
-.header-logo {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 800;
-    font-size: 1.5rem;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: -0.02em;
-}
-
-.header-actions {
+footer{
     display: flex;
     align-items: center;
-    gap: 12px;
+    justify-content: center;
+    background-color: #5765ff;
+    color: white;
+    padding: 10px 0px;
+    text-align: center;
+    margin-top: auto;
+    width: 100%;
 }
 
-.botao_logar {
+h1{
+    font-size: 2em;
+}
+
+a{
+    text-decoration: none;
+    color: #5765ff;
+}
+a:hover{
+    color: #2c37b7;
+}
+
+button{
+    background-color: black;
+    border: 1px transparent solid;
+    border-radius: 4px;
+    color: white;
+    height: 30px;
+}
+button:hover{
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+}
+
+input{
+    width: 250px;
     height: 40px;
-    padding: 0 18px;
-    border-radius: 20px;
-    font-size: 0.88rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.25s;
+    padding: 0px 10px;
+    margin: 20px 0px;
+    background-color: #DEDEDE;
+    border: 1px solid rgb(226, 226, 226);
+    border-radius: 5px;
 }
-
-.botao_logar:first-of-type {
-    background: transparent;
-    border: 2px solid var(--primary);
-    color: var(--primary);
+input:focus{
+    outline: none;
 }
-
-.botao_logar:first-of-type:hover {
-    background: var(--primary);
+.submit{
+    background-color: black;
     color: white;
-    transform: none;
+    transition: all 0.3s;
+}
+.submit:hover{
+    background-color: rgb(0, 13, 50);
+    transition: all 0.3s;
 }
 
-.botao_logar:last-of-type {
-    background: var(--gradient);
-    border: none;
+table{
+    margin: auto;
+    border: 1px solid black;
+}
+thead{
+    background-color: #2c37b7;
     color: white;
-    box-shadow: 0 4px 12px var(--primary-glow);
 }
-
-.botao_logar:last-of-type:hover {
-    box-shadow: 0 6px 20px rgba(87, 101, 255, 0.4);
-    transform: translateY(-1px);
+th{
+    padding: 0px 10px;
 }
-
-/* =====================
-   SIDE MENU
-   ===================== */
-
-.bars {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 10001;
-    cursor: pointer;
-    width: 36px;
-    height: 36px;
+td{
+    text-align: center;
+}
+/*  classes */
+.flex_colunm{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.align_center{
+    text-align: center;
+}
+
+
+.infos_claex{
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 5px;
-    background: var(--primary);
+    max-width: 1230px;
+    margin: auto;
+}
+.about_claex{
+    background-color: #E6E9FF;
+    border: 1px solid black;
+    border-radius: 3px;
+    margin: 40px;
+    padding: 30px;
+    width: 200px;
+    height: 250px;
+}
+.about_us{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    border: 1px solid black;
     border-radius: 10px;
-    padding: 8px;
-    box-shadow: 0 4px 12px var(--primary-glow);
-    transition: all 0.25s;
-}
-
-.bars:hover {
-    background: var(--primary-dark);
-    transform: scale(1.05);
-}
-
-.menu-bar {
-    width: 18px;
-    height: 2px;
-    background-color: white;
-    border-radius: 2px;
-    transition: all 0.3s;
-}
-
-#side-menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100vh;
-    background: var(--gradient-dark);
-    overflow: hidden;
-    transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 9999;
-    padding-top: 80px;
-    box-shadow: 4px 0 24px rgba(0,0,0,0.15);
-}
-
-#side-menu.open {
-    width: 260px;
-}
-
-.close-menu {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 32px;
-    height: 32px;
-    background: rgba(255,255,255,0.15);
-    border: none;
-    border-radius: 8px;
-    color: white;
-    font-size: 1.2rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s;
-    padding: 0;
-    box-shadow: none;
-}
-
-.close-menu:hover {
-    background: rgba(255,255,255,0.25);
-    transform: none;
-    box-shadow: none;
-}
-
-.menu-brand {
-    padding: 0 24px 24px;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 800;
-    font-size: 1.4rem;
-    color: white;
-    letter-spacing: -0.02em;
-    border-bottom: 1px solid rgba(255,255,255,0.15);
-    margin-bottom: 12px;
-    white-space: nowrap;
-}
-
-.side-link {
-    color: rgba(255,255,255,0.85);
-    padding: 12px 24px;
-    font-size: 0.95rem;
-    font-weight: 500;
-    white-space: nowrap;
-    transition: all 0.2s;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    border-radius: 0;
-}
-
-.side-link:hover {
-    background: rgba(255, 255, 255, 0.12);
-    color: white;
-    padding-left: 30px;
-}
-
-.microscopico {
-    width: 0 !important;
-    height: 0 !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-}
-
-/* =====================
-   HERO / CAPA INDEX
-   ===================== */
-
-#capa_index {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 60px;
-    min-height: calc(100vh - 68px);
-    padding: 60px 8%;
-    background: linear-gradient(160deg, #f0f2ff 0%, #e8f4ff 50%, #f5f0ff 100%);
-    position: relative;
-    overflow: hidden;
-}
-
-#capa_index::before {
-    content: '';
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(87,101,255,0.08) 0%, transparent 70%);
-    top: -100px;
-    right: -100px;
-    pointer-events: none;
-}
-
-#capa_index::after {
-    content: '';
-    position: absolute;
-    width: 400px;
-    height: 400px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(65,227,255,0.08) 0%, transparent 70%);
-    bottom: -50px;
-    left: -50px;
-    pointer-events: none;
-}
-
-.hero-content {
-    max-width: 520px;
-    z-index: 1;
-}
-
-.hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--accent-soft);
-    color: var(--primary);
-    border: 1px solid rgba(87,101,255,0.2);
-    border-radius: 20px;
-    padding: 6px 16px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    margin-bottom: 24px;
-}
-
-.hero-content h1 {
-    font-size: 3rem;
-    line-height: 1.1;
-    color: var(--text-dark);
-    margin-bottom: 20px;
-    font-weight: 800;
-}
-
-.hero-content h1 span {
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.hero-content p {
-    font-size: 1.1rem;
-    color: var(--text-mid);
-    margin-bottom: 36px;
-    line-height: 1.7;
-}
-
-.hero-cta {
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.btn-cta-primary {
-    height: 52px;
-    padding: 0 32px;
-    background: var(--gradient);
-    color: white;
-    border: none;
-    border-radius: 26px;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    box-shadow: 0 8px 24px var(--primary-glow);
-    transition: all 0.3s;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-}
-
-.btn-cta-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 32px rgba(87,101,255,0.4);
-}
-
-.btn-cta-secondary {
-    height: 52px;
-    padding: 0 28px;
-    background: transparent;
-    border: 2px solid var(--border);
-    color: var(--text-mid);
-    border-radius: 26px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-}
-
-.btn-cta-secondary:hover {
-    border-color: var(--primary);
-    color: var(--primary);
-    background: var(--accent-soft);
-    transform: translateY(-2px);
-}
-
-.hero-image {
-    z-index: 1;
-    flex-shrink: 0;
-}
-
-.hero-image-wrap {
-    width: 340px;
-    height: 340px;
-    background: var(--gradient);
-    border-radius: 40% 60% 55% 45% / 45% 45% 55% 55%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 24px 64px rgba(87,101,255,0.3);
-    animation: morphBlob 6s ease-in-out infinite;
-}
-
-@keyframes morphBlob {
-    0%, 100% { border-radius: 40% 60% 55% 45% / 45% 45% 55% 55%; }
-    33% { border-radius: 55% 45% 40% 60% / 60% 55% 45% 40%; }
-    66% { border-radius: 45% 55% 60% 40% / 55% 40% 60% 45%; }
-}
-
-.hero-image-wrap img {
+    margin: 40px;
+    padding: 30px;
     width: 180px;
-    filter: brightness(10);
+    height: 230px;
+}
+.about_us > img{
+    object-fit: cover;
+    height: 130px;
+    width: 180px;
+    border-radius: 5px;
 }
 
-/* =====================
-   FEATURES SECTION
-   ===================== */
-
-.features-section {
-    padding: 80px 8%;
-    background: var(--bg-white);
-}
-
-.section-header {
-    text-align: center;
-    margin-bottom: 56px;
-}
-
-.section-label {
-    display: inline-block;
-    background: var(--accent-soft);
-    color: var(--primary);
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 6px 16px;
-    border-radius: 20px;
-    margin-bottom: 16px;
-}
-
-.section-header h2 {
-    font-size: 2.2rem;
-    color: var(--text-dark);
-    margin-bottom: 12px;
-}
-
-.section-header p {
-    color: var(--text-mid);
-    max-width: 520px;
-    margin: 0 auto;
-    font-size: 1rem;
-}
-
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
-.feature-card {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 32px 28px;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.feature-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: var(--gradient);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s ease;
-}
-
-.feature-card:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-lg);
-    border-color: rgba(87,101,255,0.2);
-    background: var(--bg-white);
-}
-
-.feature-card:hover::before {
-    transform: scaleX(1);
-}
-
-.feature-icon {
-    width: 52px;
-    height: 52px;
-    background: var(--gradient);
-    border-radius: 14px;
+.caixa_sala{
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.4rem;
-    margin-bottom: 20px;
-    box-shadow: 0 6px 16px var(--primary-glow);
+    width: 120px;
+    height: 50px;
+    margin: 20px;
+    border: 1px solid black;
+    border-radius: 4px;
 }
 
-.feature-card h3 {
-    font-size: 1.1rem;
-    color: var(--text-dark);
-    margin-bottom: 10px;
-}
-
-.feature-card p {
-    color: var(--text-mid);
-    font-size: 0.9rem;
-    line-height: 1.7;
-}
-
-/* =====================
-   TEAM SECTION
-   ===================== */
-
-.team-section {
-    padding: 80px 8%;
-    background: linear-gradient(160deg, #f0f2ff, #f8f9ff);
-}
-
-.team-grid {
-    display: flex;
-    justify-content: center;
-    gap: 32px;
-    flex-wrap: wrap;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.team-card {
-    background: var(--bg-white);
-    border-radius: var(--radius-xl);
-    overflow: visible;
-    width: 240px;
-    text-align: center;
-    position: relative;
-    box-shadow: var(--shadow-md);
-    border: 1px solid var(--border);
-    padding-bottom: 28px;
-    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-    cursor: default;
-}
-
-.team-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow-lg);
-}
-
-.team-card-top {
-    height: 90px;
-    background: var(--gradient);
-    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
-    position: relative;
-    margin-bottom: 50px;
-}
-
-.team-avatar {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    object-fit: cover;
-    position: absolute;
-    bottom: -45px;
-    left: 50%;
-    transform: translateX(-50%);
-    border: 4px solid white;
-    box-shadow: 0 8px 24px rgba(87,101,255,0.2);
-    transition: transform 0.3s;
-}
-
-.team-card:hover .team-avatar {
-    transform: translateX(-50%) scale(1.05);
-}
-
-.team-name {
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--text-dark);
-    margin-bottom: 4px;
-    padding: 0 16px;
-}
-
-.team-role {
-    font-size: 0.8rem;
-    color: var(--primary);
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-}
-
-/* Popup on hover */
-.team-popup {
-    position: absolute;
-    bottom: calc(100% + 16px);
-    left: 50%;
-    transform: translateX(-50%) scale(0.9);
-    background: var(--text-dark);
+/* cores das salas */
+.vermelho{
+    background-color: #FE4F52;
     color: white;
-    border-radius: var(--radius-md);
-    padding: 16px 20px;
-    width: 220px;
-    font-size: 0.85rem;
-    line-height: 1.6;
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-    z-index: 100;
-    box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+}
+.azul{
+    background-color: #79D4FF;
+    color: white;
+}
+.verde{
+    background-color: #58F05D;
+    color: black;
+}
+.amarelo{
+    background-color: #FFFF47;
+    color: black;
+}
+.preto{
+    background-color: #626C7A;
+    color: white;
+}
+.marrom{
+    background-color: #886565;
+    color: white;
 }
 
-.team-popup::after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    border: 8px solid transparent;
-    border-top-color: var(--text-dark);
+
+.link_nova_sala{
+    margin: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.team-card:hover .team-popup {
-    opacity: 1;
-    transform: translateX(-50%) scale(1);
+/* ids */
+
+#capa_index{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    height: 600px;
+}
+#capa_index > div > h1{
+    width: 280px;
+    margin-bottom: 30px;
+}
+#capa_index > img{
+    width: 300px;
+}
+/* pra cll */
+@media screen and (max-width: 580px){
+    #capa_index{
+        flex-direction: column-reverse;
+    }
 }
 
-.team-popup-name {
-    font-weight: 700;
-    font-size: 0.9rem;
-    margin-bottom: 6px;
-    color: var(--accent);
+
+#sect_login{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin: 50px 0px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+@media screen and (max-width: 580px) {
+    #sumir{
+        visibility: hidden;
+    }
+}
+#img_login{
+    width: 300px;
+}
+#formulario_login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* =====================
-   CARROSSEL
-   ===================== */
-
-.carousel-section {
-    padding: 60px 8%;
-    background: var(--bg-white);
+#painel{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    background-color: #E6E9FF;
+}
+@media screen and (max-width: 450px) {
+    #painel{
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+}
+#painel > img{
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
-.carousel-wrapper {
-    max-width: 900px;
-    margin: 0 auto;
-    position: relative;
+
+#salas_user{
+    max-width: 1200px;
+    padding: 20px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    background-color: rgb(242, 242, 242);
+    border-radius: 5px;
+}
+#grade_aula{
+    width: 100%;
 }
 
+#form_nova_sala{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    padding: 20px;
+    margin: auto;
+}
+/* Carrossel Estilizado */
+.carousel-container { padding: 40px 5%; }
 .carousel {
     overflow: hidden;
-    border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-lg);
     position: relative;
-    background: #1a1d2e;
+    border-radius: 15px;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
 .carousel-track {
     display: flex;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.5s ease-in-out;
 }
 
 .carousel-slide {
     min-width: 100%;
-    height: 360px;
+    height: 300px;
+    
+
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 40px;
     color: white;
-    position: relative;
-    overflow: hidden;
-}
-
-.carousel-slide-inner {
-    text-align: center;
-    z-index: 2;
-    position: relative;
-}
-
-.carousel-slide-inner .slide-tag {
-    display: inline-block;
-    background: rgba(255,255,255,0.15);
-    border: 1px solid rgba(255,255,255,0.3);
-    border-radius: 20px;
-    padding: 4px 14px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-}
-
-.carousel-slide-inner h3 {
-    font-size: 1.8rem;
-    font-weight: 800;
-    margin-bottom: 12px;
-}
-
-.carousel-slide-inner p {
-    font-size: 0.95rem;
-    opacity: 0.8;
-    max-width: 440px;
-    line-height: 1.7;
-}
-
-.slide-placeholder-icon {
-    font-size: 4rem;
-    margin-bottom: 20px;
-    opacity: 0.6;
-}
-
-/* Slide backgrounds */
-.carousel-slide:nth-child(1) { background: linear-gradient(135deg, #5765ff, #7b86ff); }
-.carousel-slide:nth-child(2) { background: linear-gradient(135deg, #2c37b7, #5765ff); }
-.carousel-slide:nth-child(3) { background: linear-gradient(135deg, #1a1d4e, #2c37b7); }
-
-.carousel-controls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    margin-top: 24px;
-}
-
-.carousel-btn {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: var(--bg-white);
-    border: 2px solid var(--border);
-    color: var(--primary);
-    font-size: 1.1rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.25s;
-    box-shadow: var(--shadow-sm);
-    padding: 0;
-}
-
-.carousel-btn:hover {
-    background: var(--primary);
-    color: white;
-    border-color: var(--primary);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
 }
 
 .carousel-dots {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 0;
+    text-align: center;
+    padding: 10px;
 }
 
 .dot {
-    height: 8px;
-    width: 8px;
-    background: var(--border);
+    height: 10px;
+    width: 10px;
+    background: #bbb;
     border-radius: 50%;
+    display: inline-block;
+    margin: 0 5px;
     cursor: pointer;
-    transition: all 0.3s;
 }
 
-.dot.active {
-    background: var(--primary);
-    width: 24px;
-    border-radius: 4px;
-}
+.dot.active { background: var(--primary); }
 
-/* =====================
-   FOOTER
-   ===================== */
-
-footer {
-    background: var(--text-dark);
-    color: rgba(255,255,255,0.7);
-    margin-top: auto;
-}
-
-.footer-main {
+/* Grids e Cards */
+.grid-container {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
-    gap: 48px;
-    padding: 60px 8% 48px;
-    max-width: 1200px;
-    margin: 0 auto;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px 5%;
 }
 
-.footer-brand-col .footer-logo {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 800;
-    font-size: 1.8rem;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 12px;
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    text-align: center;
 }
 
-.footer-brand-col p {
-    font-size: 0.9rem;
-    line-height: 1.7;
-    max-width: 280px;
-    color: rgba(255,255,255,0.5);
+.about_us {
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
 }
 
-.footer-col h4 {
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+.avatar {
+    width: 80px;
+    height: 80px;
+    background: var(--primary);
     color: white;
-    margin-bottom: 20px;
-}
-
-.footer-col a {
-    display: block;
-    color: rgba(255,255,255,0.5);
-    font-size: 0.88rem;
-    margin-bottom: 10px;
-    transition: color 0.2s;
-}
-
-.footer-col a:hover {
-    color: white;
-}
-
-.footer-divider {
-    height: 1px;
-    background: rgba(255,255,255,0.08);
-    margin: 0 8%;
-}
-
-.footer-bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 8%;
-    max-width: 1200px;
-    margin: 0 auto;
-    font-size: 0.82rem;
-    color: rgba(255,255,255,0.35);
-}
-
-.footer-bottom-links {
-    display: flex;
-    gap: 24px;
-}
-
-.footer-bottom-links a {
-    color: rgba(255,255,255,0.35);
-    font-size: 0.82rem;
-    transition: color 0.2s;
-}
-
-.footer-bottom-links a:hover {
-    color: rgba(255,255,255,0.7);
-}
-
-/* =====================
-   LOGIN / CADASTRO
-   ===================== */
-
-.auth-page {
-    background: linear-gradient(160deg, #f0f2ff 0%, #e8f4ff 100%);
-    min-height: 100vh;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 40px 20px;
+    font-size: 2rem;
+    margin: 0 auto 15px;
 }
+
+
+.bars {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 10001;
+  cursor: pointer;
+}
+
+.menu-bar {
+  width: 30px;
+  height: 4px;
+  background: #000;
+  margin: 5px 0;
+  border-radius: 8px;
+}
+
+
+#side-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;          
+  height: 100vh;
+  background-color: #5765ff;
+  overflow: hidden;
+  transition: width 0.3s;
+  z-index: 9999;
+  padding-top: 60px;
+}
+
+
+.bars:hover + #side-menu,
+#side-menu:hover {
+  width: 220px;    
+}
+
+
+.side-link {
+  color: white;
+  padding: 15px 20px;
+  font-size: 18px;
+  white-space: nowrap;
+  transition: background 0.2s;
+  display: block;
+}
+
+.side-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+/* --- Seção de Login Modernizada  --- */
 
 #sect_login {
     display: flex;
-    align-items: stretch;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    min-height: 70vh;
+    margin: 50px auto;
     max-width: 900px;
-    width: 100%;
-    background: var(--bg-white);
-    border-radius: var(--radius-xl);
-    box-shadow: 0 24px 64px rgba(87,101,255,0.15);
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra suave */
     overflow: hidden;
+    padding: 20px;
 }
 
-.auth-left {
-    background: var(--gradient);
-    padding: 60px 48px;
+/* O container da esquerda (com a imagem) */
+#sect_login > .flex_colunm:first-child {
+    background: linear-gradient(135deg, #5765ff, #79D4FF);
+    padding: 40px;
+    border-radius: 15px;
     color: white;
-    text-align: center;
-    flex: 0 0 42%;
+    flex: 1;
+    min-width: 280px;
+}
+
+#img_login {
+    width: 180px; /* Reduzi um pouco para ficar mais elegante */
+    margin-bottom: 20px;
+    filter: brightness(0) invert(1); /* Deixa o ícone branco */
+}
+
+/* O container da direita (com o formulário) */
+#sect_login > .flex_colunm:last-child {
+    flex: 1.2;
+    padding: 40px;
+    min-width: 300px;
+}
+
+#sect_login h1 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+#formulario_login {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
+    width: 100%;
 }
 
-.auth-left::before {
-    content: '';
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.08);
-    top: -60px;
-    right: -60px;
+/* Estilizando seus inputs existentes */
+#formulario_login input {
+    width: 100%; /* Ocupa o espaço do container */
+    max-width: 320px;
+    border: 2px solid #eee;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
 }
 
-.auth-left::after {
-    content: '';
-    position: absolute;
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.06);
-    bottom: -40px;
-    left: -40px;
+#formulario_login input:focus {
+    border-color: #5765ff;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(87, 101, 255, 0.1);
 }
 
-.auth-left-logo {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 800;
-    font-size: 2.2rem;
-    margin-bottom: 12px;
-    position: relative;
-    z-index: 1;
-}
-
-.auth-left img {
-    width: 100px;
-    filter: brightness(10);
-    margin-bottom: 24px;
-    position: relative;
-    z-index: 1;
-}
-
-.auth-left h2 {
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-    position: relative;
-    z-index: 1;
-}
-
-.auth-left p {
-    font-size: 0.9rem;
-    opacity: 0.8;
-    line-height: 1.7;
-    position: relative;
-    z-index: 1;
-}
-
-.auth-right {
-    flex: 1;
-    padding: 52px 48px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.auth-right h1 {
-    font-size: 1.8rem;
-    color: var(--text-dark);
-    margin-bottom: 6px;
-}
-
-.auth-right .auth-subtitle {
-    color: var(--text-mid);
-    font-size: 0.9rem;
-    margin-bottom: 32px;
-}
-
-.auth-form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+/* Estilizando seu botão .submit */
+.submit {
+    width: 100%;
     max-width: 340px;
+    height: 45px;
+    background-color: #5765ff; /* Usei o seu azul padrão */
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
 }
 
-.auth-form .input-group {
-    display: flex;
-    flex-direction: column;
+.submit:hover {
+    background-color: #2c37b7;
+    transform: translateY(-2px); /* Efeito de levante */
+    box-shadow: 0 5px 15px rgba(44, 55, 183, 0.3);
 }
 
-.auth-form input, .auth-form select {
-    margin: 0;
-    height: 50px;
-}
-
-.auth-form .submit {
-    max-width: 100%;
-    margin-top: 8px;
-}
-
-.auth-footer-text {
+/* Ajuste para o texto de cadastro */
+#sect_login p {
     margin-top: 20px;
-    font-size: 0.88rem;
-    color: var(--text-mid);
+    font-size: 0.9em;
+    color: #666;
 }
 
-.auth-footer-text a {
-    color: var(--primary);
-    font-weight: 600;
+/* Responsividade para celular (mantendo seu max-width: 580px) */
+@media screen and (max-width: 580px) {
+    #sect_login {
+        flex-direction: column;
+        margin: 20px;
+        box-shadow: none;
+        border: 1px solid #eee;
+    }
+    
+    #sumir {
+        display: none; /* Em vez de visibility, usei display para não ocupar espaço */
+    }
+    
+    #sect_login > .flex_colunm:first-child {
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+    }
 }
+/* --- Modernização da Página de Nova Sala --- */
 
-/* =====================
-   NOVA SALA / CONFIG SALA
-   ===================== */
-
-.room-page-header {
-    background: var(--gradient);
-    padding: 40px 8%;
-    color: white;
-}
-
-.room-page-header h1 {
-    font-size: 1.8rem;
-    margin-bottom: 6px;
-}
-
-.room-page-header p {
-    opacity: 0.85;
-    font-size: 0.95rem;
-}
-
-.room-form-container {
+#form_nova_sala {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Cria colunas automáticas */
+    gap: 70px;
     max-width: 1000px;
     margin: 40px auto;
-    padding: 0 5%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 28px;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    border: 1px solid #f0f0f0;
+    flex: 1; /* Isso é pa empurra o footer para baixo */
+    margin: 40px auto; /* Adiciona margem em cima e embaixo */
 }
 
-.room-form-card {
-    background: var(--bg-white);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 32px;
-    box-shadow: var(--shadow-sm);
-    transition: box-shadow 0.3s;
+/* Estilizando cada bloco (article) como um sub-card */
+#form_nova_sala article {
+    background: #fcfcfc;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    margin: 10px; /* Garante margem mínima */
+    flex: 1;      /* Faz os dois terem tamanhos iguais */
+    min-width: 300px; /* Evita que fiquem muito esmagados */
 }
 
-.room-form-card:hover {
-    box-shadow: var(--shadow-md);
-}
-
-.room-form-card h3 {
-    font-size: 1rem;
-    color: var(--primary);
-    margin-bottom: 24px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.room-form-card h3 .card-icon {
-    width: 36px;
-    height: 36px;
-    background: var(--accent-soft);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-}
-
-.form-group {
+#form_nova_sala h3 {
+    color: #5765ff;
     margin-bottom: 20px;
+    border-bottom: 2px solid #5765ff;
+    display: inline-block;
+    padding-bottom: 5px;
+    
 }
 
-.room-form-actions {
-    grid-column: 1 / -1;
+/* Melhorando os Labels e Inputs */
+#form_nova_sala label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    color: #444;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+#form_nova_sala input {
+    width: 100%;
+    max-width: 100%; /* Garante que não ultrapasse o card */
+    margin: 8px 0 15px 0; /* Espaçamento equilibrado */
+    box-sizing: border-box;
+}
+
+/* O link que envolve o botão ocupar a linha toda se necessário */
+#form_nova_sala > a {
+    grid-column: 1 / -1; /* Faz o botão ocupar a largura total do grid */
+    text-align: center;
+}
+
+#form_nova_sala .submit {
+    width: 100%;
+    max-width: 400px;
+    height: 50px;
+    font-size: 1.1em;
+    margin-top: 10px;
+}
+
+/* Ajuste fino para o Header */
+header {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Responsividade */
+@media screen and (max-width: 650px) {
+    #form_nova_sala {
+        margin: 20px;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+    }
+}
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+.perfil-link img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid white; /* Destaca a foto */
+}
+.menu-bar {
+    width: 25px;
+    height: 3px;
+    background-color: white; /* Branco fica melhor no azul */
+    margin: 4px 0;
+    border-radius: 4px;
+}
+.microscopico {
+    width: 0 !important;
+    height: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none; /* Garante que não seja clicável */
+}
+#painel {
+    background: linear-gradient(135deg, #5765ff, #3d49c2);
+    padding: 50px 20px;
     display: flex;
     justify-content: center;
-    gap: 16px;
-    padding-top: 8px;
-}
-
-.room-form-actions .submit {
-    max-width: 280px;
-    height: 52px;
-}
-
-/* =====================
-   GRADE HORÁRIA
-   ===================== */
-
-.grade-header {
-    background: var(--gradient);
-    padding: 0;
-}
-
-.grade-painel {
-    display: flex;
     align-items: center;
-    gap: 28px;
-    padding: 36px 8%;
-    color: white;
-}
-
-.grade-painel-avatar {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 3px solid rgba(255,255,255,0.3);
-    object-fit: cover;
-    flex-shrink: 0;
-}
-
-.grade-painel-info h1 {
-    font-size: 1.6rem;
-    margin-bottom: 4px;
-}
-
-.grade-painel-info p {
-    opacity: 0.85;
-    font-size: 0.9rem;
-    margin-bottom: 4px;
-}
-
-.grade-meta {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-top: 8px;
-}
-
-.grade-meta-tag {
-    background: rgba(255,255,255,0.15);
-    border: 1px solid rgba(255,255,255,0.25);
-    border-radius: 20px;
-    padding: 4px 14px;
-    font-size: 0.8rem;
-    font-weight: 600;
-}
-
-.grade-toolbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 8%;
-    max-width: 1200px;
-    margin: 0 auto;
-    flex-wrap: wrap;
-    gap: 16px;
-}
-
-.grade-toolbar h2 {
-    font-size: 1.3rem;
-    color: var(--text-dark);
-}
-
-.grade-toolbar-actions {
-    display: flex;
-    gap: 12px;
-}
-
-.grade-toolbar-actions button {
-    height: 42px;
-    padding: 0 20px;
-    border-radius: 21px;
-    font-size: 0.88rem;
-}
-
-#grade_aula {
-    max-width: 1200px;
-    margin: 0 auto 60px;
-    padding: 0 5%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-}
-
-/* Color-coded subjects */
-.subject-mat { background: rgba(87,101,255,0.1); color: var(--primary); font-weight: 500; border-radius: 6px; }
-.subject-port { background: rgba(65,227,255,0.12); color: #0891b2; font-weight: 500; border-radius: 6px; }
-.subject-hist { background: rgba(249,115,22,0.1); color: #ea580c; font-weight: 500; border-radius: 6px; }
-.subject-cien { background: rgba(34,197,94,0.1); color: #16a34a; font-weight: 500; border-radius: 6px; }
-
-/* =====================
-   PAINEL / LISTAR SALAS
-   ===================== */
-
-#painel {
-    background: var(--gradient);
-    padding: 48px 8%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 28px;
+    gap: 30px;
     color: white;
 }
 
 #painel img {
-    width: 96px;
-    height: 96px;
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
-    border: 3px solid rgba(255,255,255,0.3);
+    border: 4px solid rgba(255, 255, 255, 0.2);
     object-fit: cover;
-    flex-shrink: 0;
 }
 
 #painel h1 {
-    font-size: 1.8rem;
-    margin: 0 0 8px 0;
+    font-size: 2rem;
+    margin: 0 0 10px 0;
 }
 
 #painel p {
-    margin: 4px 0;
-    opacity: 0.85;
-    font-size: 0.92rem;
+    margin: 5px 0;
+    opacity: 0.9;
+    font-weight: 300;
 }
-
 .link_nova_sala {
-    max-width: 1100px;
-    margin: 36px auto 20px;
+    max-width: 1000px;
+    margin: 40px auto 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 5%;
-    gap: 16px;
-}
-
-.link_nova_sala h2 {
-    font-size: 1.4rem;
-    color: var(--text-dark);
+    padding: 0 20px;
 }
 
 .link_nova_sala button {
-    background: var(--gradient);
+    background-color: #5765ff;
     color: white;
     border: none;
-    padding: 0 24px;
-    height: 44px;
-    border-radius: 22px;
-    font-weight: 700;
-    transition: all 0.3s;
-    box-shadow: 0 4px 12px var(--primary-glow);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
 }
 
 .link_nova_sala button:hover {
+    background-color: #2c37b7;
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(87,101,255,0.4);
 }
 
+/* Grid de Salas */
 #salas_user {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 20px;
-    max-width: 1100px;
-    margin: 0 auto 60px;
-    padding: 0 5%;
+    gap: 25px;
+    max-width: 1000px;
+    margin: 0 auto 50px;
+    padding: 20px;
 }
 
 #salas_user a {
-    text-decoration: none;
+    text-decoration: none; /* Remove sublinhado dos links */
 }
 
-/* =====================
-   SALAS (CARDS)
-   ===================== */
-
 .caixa_sala {
-    height: 96px;
-    border-radius: var(--radius-lg);
+    height: 90px;
+    border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 800;
-    font-size: 1.2rem;
-    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-    box-shadow: var(--shadow-sm);
-    font-family: 'Space Grotesk', sans-serif;
-    letter-spacing: -0.01em;
+    font-weight: bold;
+    font-size: 1.5rem;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .caixa_sala:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+    
 }
 
-.vermelho { background: var(--gradient); color: white; border: none; }
-.azul     { background: linear-gradient(135deg, #60b8ff, #41c5ff); color: white; }
-.verde    { background: linear-gradient(135deg, #4ade80, #22c55e); color: white; }
-.amarelo  { background: linear-gradient(135deg, #fde047, #fbbf24); color: #78350f; }
-.preto    { background: linear-gradient(135deg, #6b7280, #4b5563); color: white; }
-.marrom   { background: linear-gradient(135deg, #a78bfa, #8b5cf6); color: white; }
+/* Sua classe de cor mantida, mas com gradiente */
+.vermelho {
+    background: linear-gradient(135deg, #5765ff, #41e3ff);
+    color: white;
+    border: none;
+}
+/* --- Estilização da Grade de Aulas --- */
 
-/* =====================
-   UTILITIES
-   ===================== */
-
-.flex_colunm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+#grade_aula {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 20px;
+    overflow-x: auto; /* Permite scroll se a tela for pequena */
 }
 
-.align_center {
+table {
+    width: 100%;
+    border-collapse: separate; /* Permite arredondar cantos */
+    border-spacing: 0;
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+/* Cabeçalho da Tabela */
+thead th {
+    background-color: #5765ff;
+    color: white;
+    text-transform: capitalize;
+    padding: 15px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: none;
+}
+
+/* Células da Tabela */
+tbody td {
+    padding: 15px;
     text-align: center;
+    border-bottom: 1px solid #f0f0f0;
+    color: #444;
+    font-size: 0.9rem;
+    transition: background 0.3s;
 }
 
-.infos_claex {
+/* Coluna de Horários (Destaque) */
+tbody td:first-child {
+    font-weight: bold;
+    color: #5765ff;
+    background-color: #f9f9ff;
+    width: 80px;
+}
+
+/* Efeito de destaque na linha ao passar o mouse */
+tbody tr:hover td {
+    background-color: #f4f6ff;
+}
+
+/* Botões de Ação na Grade */
+.link_nova_sala {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 1200px;
-    margin: auto;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 40px auto 10px;
+    padding: 0 20px;
 }
 
-/* =====================
-   RESPONSIVIDADE
-   ===================== */
-
-@media (max-width: 900px) {
-    .footer-main {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .footer-brand-col {
-        grid-column: 1 / -1;
-    }
-
-    .room-form-container {
-        grid-template-columns: 1fr;
-    }
-
-    .room-form-actions {
-        grid-column: auto;
-    }
+.link_nova_sala button {
+    background-color: #f0f2f5;
+    color: #333;
+    border: 1px solid #ddd;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
 }
 
-@media (max-width: 768px) {
-    #capa_index {
-        flex-direction: column-reverse;
-        min-height: auto;
-        padding: 48px 5%;
-        gap: 32px;
+.link_nova_sala button:hover {
+    background-color: #e2e6ea;
+    border-color: #ccc;
+}
+
+/* Destaque para o botão de Alterar Grade */
+.link_nova_sala button:last-child {
+    background-color: #5765ff;
+    color: white;
+    border: none;
+}
+
+.link_nova_sala button:last-child:hover {
+    background-color: #2c37b7;
+}
+
+/* --- Ajustes para Celular (Telas até 768px) --- */
+@media screen and (max-width: 768px) {
+    
+    /* 1. Header: Ajusta o espaçamento */
+    header {
+        padding: 0 15px;
     }
 
-    .hero-content h1 {
-        font-size: 2.2rem;
-    }
-
-    .hero-image-wrap {
-        width: 220px;
-        height: 220px;
-    }
-
-    .hero-image-wrap img {
-        width: 120px;
-    }
-
+    /* 2. Painel: Foto menor e textos centralizados */
     #painel {
         flex-direction: column;
         text-align: center;
-        padding: 36px 5%;
-        gap: 16px;
+        padding: 30px 15px;
+        gap: 15px;
     }
 
+    #painel img {
+        width: 90px;
+        height: 90px;
+    }
+
+    #painel h1 {
+        font-size: 1.5rem;
+    }
+
+    /* 3. Botões e Títulos: Empilha os botões se não couberem */
     .link_nova_sala {
         flex-direction: column;
-        gap: 16px;
+        gap: 15px;
+        text-align: center;
+        margin: 20px auto;
+    }
+
+    .link_nova_sala h2 {
+        order: -1; /* Título da sala fica no topo */
+        font-size: 1.3rem;
+    }
+
+    .link_nova_sala button {
+        width: 100%; /* Botões ocupam a largura total no cell */
+        max-width: 300px;
+    }
+
+    /* 4. A TABELA: O ponto principal */
+    #grade_aula {
+        padding: 0 10px;
+        margin-top: 10px;
+    }
+
+    /* Permite que o usuário deslize a tabela para os lados */
+    #grade_aula {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch; /* Scroll suave no iOS */
+    }
+
+    table {
+        min-width: 600px; /* Garante que a tabela não "esmague" o conteúdo */
+    }
+
+    th, td {
+        padding: 10px 5px; /* Reduz o preenchimento interno */
+        font-size: 0.8rem;
+    }
+
+    /* 5. Footer: Ajusta as colunas para empilhar */
+    .footer-links {
+        flex-direction: column;
+        gap: 20px;
         text-align: center;
     }
-
-    #sect_login {
-        flex-direction: column;
-    }
-
-    .auth-left {
-        padding: 40px 32px;
-    }
-
-    .auth-right {
-        padding: 40px 32px;
-    }
-
-    .footer-main {
-        grid-template-columns: 1fr;
-        padding: 40px 5%;
-        gap: 32px;
-    }
-
-    .footer-bottom {
-        flex-direction: column;
-        gap: 12px;
-        text-align: center;
-    }
-
-    table { min-width: 600px; }
-
-    .grade-toolbar {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    #sumir { display: none; }
 }
 
-@media (max-width: 580px) {
-    .hero-cta {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .btn-cta-primary, .btn-cta-secondary {
-        width: 100%;
-    }
-
+/* Ajuste específico para telas muito pequenas (até 480px) */
+@media screen and (max-width: 480px) {
     .caixa_sala {
+        width: 100%; /* Salas ocupam a tela toda uma embaixo da outra */
         height: 80px;
     }
-
+    
     #salas_user {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Força uma coluna só */
     }
 }
+/* --- Estilização do Cadastro --- */
+
+#sect_login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    margin: 40px auto;
+    max-width: 850px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Lado Azul (Bem-vindo) */
+#sect_login > .flex_colunm:first-child {
+    background: linear-gradient(135deg, #5765ff, #79D4FF);
+    padding: 60px;
+    color: white;
+    text-align: center;
+    flex: 1;
+}
+
+#img_login {
+    width: 120px;
+    margin-bottom: 20px;
+    filter: brightness(1) invert(0); /* mudei pro padrao */
+}
+
+/* Lado do Formulário */
+#sect_login > .flex_colunm:last-child {
+    flex: 1.2;
+    padding: 40px;
+}
+
+#formulario_login {
+    width: 100%;
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espaço entre campos */
+}
+
+/* Estilização do Select */
+.select-moderno {
+    width: 100%;
+    height: 45px;
+    padding: 0 10px;
+    margin: 10px 0;
+    background-color: #f0f2f5;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #555;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.select-moderno:focus {
+    outline: none;
+    border-color: #5765ff;
+    background-color: #fff;
+}
+
+/* Botão Submit (Ajuste de tamanho) */
+.submit {
+    width: 100%;
+    height: 48px !important;
+    background-color: #5765ff;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: 0.3s;
+}
+
+.submit:hover {
+    background-color: #2c37b7;
+    transform: translateY(-2px);
+}
+
+/* --- Responsividade para Celular --- */
+@media screen and (max-width: 768px) {
+    #sect_login {
+        flex-direction: column;
+        margin: 20px;
+        box-shadow: none;
+        border: 1px solid #eee;
+    }
+
+    #sumir {
+        display: none; /* Esconde o texto longo no celular */
+    }
+
+    #sect_login > .flex_colunm:first-child {
+        width: 100%;
+        padding: 30px;
+    }
+
+    #img_login {
+        width: 80px;
+        margin-bottom: 0;
+    }
+}
+body {
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text);
+    overflow-x: hidden;
+}
+.logo-text { color: white; font-weight: bold; font-size: 1.5rem; margin-left: 10px; }
+.menu-icon { cursor: pointer; transition: 0.3s; }
+.menu-icon:hover { opacity: 0.8; }
+
+/* Botões */
+.btn-primary, .btn-hero {
+    background: white;
+    color: var(--primary);
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    border: none;
+    transition: 0.3s;
+}
+
+.btn-primary:hover { transform: scale(1.05); }
