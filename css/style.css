@@ -918,7 +918,7 @@ tbody tr:hover td {
 #img_login {
     width: 120px;
     margin-bottom: 20px;
-    filter: brightness(1) invert(0); /* mudei pro padrao */
+    filter: brightness(0) invert(1); /* Ícone branco */
 }
 
 /* Lado do Formulário */
