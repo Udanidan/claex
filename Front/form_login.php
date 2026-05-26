@@ -53,7 +53,7 @@
                         <input type="submit" class="submit" value="cadastrar">
                     </form>
 
-                    <p>Possui uma conta? <a href="form_login.php?tipo=logar">clique aqui</a></p>
+                    <p>Possui uma conta? <a href="form_login.php?tipo=entrar">clique aqui</a></p>
                 <?php } ?>
             </article>
         </section>
