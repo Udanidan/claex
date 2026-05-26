@@ -1,36 +1,82 @@
 from random import choice, randint
+import copy
 
+# gradeSala2 = [
+#     ["mat", "mat", "hist"], # segunda
+#     ["mat", "mat", "quim"], # terça
+#     ["port", "port", "hist"], # quarta
+#     ["port","port","quim"], # quinta
+#     ['-', '-', 'roblox']  # sexta
+# ]
 
 gradeSala2 = [
-    ["mat", "mat", "hist"], # segunda
-    ["mat", "mat", "quim"], # terça
-    ["port", "port", "hist"], # quarta
-    ["port","port","quim"], # quinta
-    ['-', '-', '-']  # sexta
+    ["mat", "port", "hist", "geo", "cien", "ing", "edfis", "art"],   # segunda
+    ["mat", "port", "quim", "fis", "bio", "geo", "ing", "red"],      # terça
+    ["port", "mat", "hist", "cien", "art", "edfis", "geo", "ing"],   # quarta
+    ["mat", "port", "fis", "quim", "bio", "hist", "red", "edfis"],   # quinta
+    ["port", "mat", "geo", "hist", "cien", "art", "ing", "proj"]     # sexta
+]
+materias = [
+    "mat",
+    "mat",
+    "mat",
+    "mat",
+    "mat",
+    "port",
+    "port",
+    "port",
+    "port",
+    "port",
+    "hist",
+    "hist",
+    "hist",
+    "hist",
+    "geo",
+    "geo",
+    "geo",
+    "geo",
+    "cien",
+    "cien",
+    "cien",
+    "fis",
+    "fis",
+    "quim",
+    "quim",
+    "bio",
+    "bio",
+    "ing",
+    "ing",
+    "ing",
+    "ing",
+    "edfis",
+    "edfis",
+    "edfis",
+    "art",
+    "art",
+    "art",
+    "red",
+    "red",
+    "proj"
 ]
 
-
 def gerarGrade(materia: list, quantAulas: int):
-    materia = materia.copy()
+    materias = materia.copy()
     grade = [["-" for a in range(quantAulas)] for i in range(5)]
-    
+
     for dia in range(len(grade)):
         for mat in range(len(grade[dia])):
-            if materia == []:
+            if materias == []:
                 grade[dia][mat] = "--"
             else:
-                materiaAleatoria = choice(materia)
+                materiaAleatoria = choice(materias)
                 grade[dia][mat] = materiaAleatoria
-                materia.remove(materiaAleatoria)
+                materias.remove(materiaAleatoria)
     return grade
 
 def mostrarGrade(grade: list):
-    for e in grade:
-        print("[")
-        for i in e:
-            print(i,end=", ")
-        print()
-        print("]")
+    dias = ["segunda", "terça", "quarta", "quinta", "sexta"]
+    for e in range(5):
+        print(dias[e]+":",grade[e])
 
 # inicio da analise da qualidade da grade
 
@@ -44,17 +90,13 @@ def validarGrade(grade: list, materias: list):
 
 def profIguais(grade: list):
     iguais = 0 #Ruim
-    diferentes = 0 # Bom
     for i in range(len(grade)):
         for a in range(len(grade[i])):
             if grade[i][a] == gradeSala2[i][a]:
                 # print("posição",i,a,":", grade[i][a], "==", gradeSala2[i][a])
                 iguais += 1
-            else:
-                # print("posição",i,a,":", "errooooo")
-                diferentes += 1
     
-    return [iguais, diferentes]
+    return iguais
 
 def mesmoDia(grade: list, materia: list):
     matSimp = set(materia)
@@ -106,56 +148,44 @@ def mutargrade(grade: list):
 
 def avacarGeracao(grade: list, materia: list, quantGeracoes: int, quantIndividuos: int):
     listaInd = ['' for i in range(quantIndividuos)]
-    melhorInd = grade
-    for gera in range(quantGeracoes):
-        for ind in range(quantIndividuos):
-            listaInd[ind] = mutargrade(grade)
-        for indv in listaInd:
-            if validarGrade(melhorInd, materia) < validarGrade(indv, materia):
-                melhorInd = indv
-    return melhorInd
-        
+    melhorInd = copy.deepcopy(grade)
+    melhorScore = validarGrade(melhorInd, materia)
+    for i in range(profIguais(melhorInd)):
+        melhorScore -= 10
 
-materias = [
-    "mat",
-    "mat",
-    "mat",
-    "mat",
-    "port",
-    "port",
-    "port",
-    "port",
-    "hist",
-    "hist",
-    "quim",
-    "quim"
-]
+    for geracao in range(quantGeracoes):
+        for ind in range(quantIndividuos):
+            listaInd[ind] = mutargrade(copy.deepcopy(melhorInd))
+        for indv in listaInd:
+            indvScore = validarGrade(indv, materia)
+            for i in range(profIguais(indv)):
+                indvScore -= 10
+            # print("pontuação melhor:", melhorScore, "| pontuação verificada:", indvScore, validarGrade(melhorInd, materia) < validarGrade(indv, materia))
+            if melhorScore < indvScore:
+                melhorInd = copy.deepcopy(indv)
+                melhorScore = indvScore
+    
+    return melhorInd
 
 # testes
-quantAulasDia = 3
+quantAulasDia = 8
+tamanhoPopulacao = 20
+quantGeracoes = 20
 pontuacao = 0
 
 grade1 = gerarGrade(materias, quantAulasDia)
+
+gradeMutada = avacarGeracao(grade1, materias, quantGeracoes, tamanhoPopulacao)
+
 mostrarGrade(grade1)
+print("-------------------")
+mostrarGrade(gradeMutada)
 
-print("pontuação da grade 1:", validarGrade(grade1,materias))
-
+print("grade 2:", validarGrade(gradeSala2, materias))
+print("pontuação da grade inicial:", validarGrade(grade1,materias))
 mats = profIguais(grade1)
-print("iguais:", mats[0])
-print("diferentes uhuu:", mats[1])
+print("iguais:", mats)
 
-gradeMutada = avacarGeracao(grade1, materias, 2, 5)
-
-# mostrarGrade(gradeMutada)
 print("pontuação da grade mutada:", validarGrade(gradeMutada,materias))
-
 mats = profIguais(gradeMutada)
-print("iguais:", mats[0])
-print("diferentes uhuu:", mats[1])
-
-
-# gradeSemConflitos = removerConflitos(grade1)
-# mostrarGrade(gradeSemConflitos[0])
-# print("quantidade de tentativas para achar:", gradeSemConflitos[1])
-
-# mostrarGrade()
+print("iguais:", mats)
