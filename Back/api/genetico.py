@@ -85,6 +85,8 @@ def validarGrade(grade: list, materias: list):
     
     pontos += mesmoDia(grade, materias)
     pontos += aulasSeguidas(grade)
+    pontos += limitAulasDiaria(grade, materias)
+    pontos += profIguais(grade) * -10
     
     return pontos
 
@@ -104,7 +106,7 @@ def mesmoDia(grade: list, materia: list):
     for e in matSimp:
         for i in grade:
             if i.count(e) > 1:
-                total += 1
+                total += 0
     return total
 
 def aulasSeguidas(grade: list):
@@ -113,9 +115,20 @@ def aulasSeguidas(grade: list):
         for a in range(len(i)):
             if a != len(i)-1:
                 if i[a] == i[a+1]:
-                    total += 1
+                    total += 2
+                    if a % 2 == 0: # verifica se não tem intervalo no meio
+                        total += 1
+                    else:
+                        total -= 2
     return total
 
+def limitAulasDiaria(grade: list, materias:list):
+    total = 0
+    for i in set(materias):
+        for a in grade:
+            if a.count(i) > 2:
+                total -= a.count(i)-2
+    return total
 # treinamentos e alteração da grade
 
 def removerConflitos(grade):
@@ -158,8 +171,8 @@ def avacarGeracao(grade: list, materia: list, quantGeracoes: int, quantIndividuo
             listaInd[ind] = mutargrade(copy.deepcopy(melhorInd))
         for indv in listaInd:
             indvScore = validarGrade(indv, materia)
-            for i in range(profIguais(indv)):
-                indvScore -= 10
+            # for i in range(profIguais(indv)):
+            #     indvScore -= 10
             # print("pontuação melhor:", melhorScore, "| pontuação verificada:", indvScore, validarGrade(melhorInd, materia) < validarGrade(indv, materia))
             if melhorScore < indvScore:
                 melhorInd = copy.deepcopy(indv)
@@ -169,8 +182,8 @@ def avacarGeracao(grade: list, materia: list, quantGeracoes: int, quantIndividuo
 
 # testes
 quantAulasDia = 8
-tamanhoPopulacao = 20
-quantGeracoes = 20
+tamanhoPopulacao = 30
+quantGeracoes = 30
 pontuacao = 0
 
 grade1 = gerarGrade(materias, quantAulasDia)
