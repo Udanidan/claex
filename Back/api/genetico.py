@@ -65,10 +65,10 @@ gradeSala6 = [
 ]
 
 gradeSala7 = [
-    ['--', 'art', 'fis', 'fis', 'quim', 'quim', 'edfis', 'edfis']
-    ['--', 'mat', 'hist', 'hist', 'proj', 'geo', '--', 'geo']
-    ['--', 'mat', 'ing', 'ing', 'port', 'port', 'bio', 'bio']
-    ['art', 'art', 'red', 'red', 'ing', 'ing', 'hist', 'hist']
+    ['--', 'art', 'fis', 'fis', 'quim', 'quim', 'edfis', 'edfis'],
+    ['--', 'mat', 'hist', 'hist', 'proj', 'geo', '--', 'geo'],
+    ['--', 'mat', 'ing', 'ing', 'port', 'port', 'bio', 'bio'],
+    ['art', 'art', 'red', 'red', 'ing', 'ing', 'hist', 'hist'],
     ['geo', 'geo', 'cien', 'cien', 'mat', 'mat', 'port', 'port']
 ]
 
@@ -171,21 +171,16 @@ def aulasSeguidas(grade: list):
     total = 0
     for i in grade:
         for a in range(len(i)):
-            if a != len(i)-1:
-                if i[a] == i[a+1]:
-                    total += 2
-                    if a % 2 == 0: # verifica se não tem intervalo no meio
-                        total += 1
-                    else:
-                        total -= 2
+            if a != len(i)-1 and i[a] == i[a+1] and a % 2 == 0: # verifica se não tem intervalo no meio
+                total += 3
     return total
 
 def validarVagas(grade: list):
     total = 0
     for i in grade:
-        for a in range(len(grade)):
-            if a == 0 and i[a] == '--' or a == len(grade)-1 and i[a] == '':
-                total += 5
+        for a in range(len(i)):
+            if a == 0 and i[a] == '--' or a == len(i)-1 and i[a] == '--':
+                total += 3
     return total
 
 def limitAulasDiaria(grade: list, materias:list):
@@ -250,7 +245,8 @@ tamanhoPopulacao = 40
 quantGeracoes = 40
 pontuacao = 0
 
-gradesExistentes = [gradeSala2, gradeSala3, gradeSala4, gradeSala5, gradeSala6]
+# gradesExistentes = [gradeSala2, gradeSala3, gradeSala4, gradeSala5, gradeSala6]
+gradesExistentes = [gradeSala2]
 
 grade1 = gerarGrade(materias, quantAulasDia)
 

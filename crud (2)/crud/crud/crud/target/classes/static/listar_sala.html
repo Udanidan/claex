@@ -52,7 +52,35 @@ bars.addEventListener("click", () => {
     </div>
     
     <section id="salas_user">
-        <a href="grade.html">
+
+        <script>
+            const api = "/salas/listar";
+
+            async function listarSalas() {
+                const response = await fetch("/salas/listar")
+
+                console.log(response)
+                
+                const salas = await response.json();
+                console.log(salas)
+
+                const sect = document.getElementById("salas_user")
+
+                sect.innerHTML = "";
+
+                salas.forEach((sala) => {
+                    sect.innerHTML += `
+                    <article class="caixa_sala vermelho">
+                        <p>${sala.nome_sala}</p>
+                    </article>
+                    `
+                });
+            }
+
+            listarSalas()
+        </script>
+
+        <!-- <a href="grade.html">
             <article class="caixa_sala vermelho">
                 <p>Sala 1</p>
             </article>
@@ -71,7 +99,7 @@ bars.addEventListener("click", () => {
             <article class="caixa_sala vermelho">
                 <p>Sala 4</p>
             </article>
-        </a>
+        </a> -->
     </section>
 </main>
 <footer>

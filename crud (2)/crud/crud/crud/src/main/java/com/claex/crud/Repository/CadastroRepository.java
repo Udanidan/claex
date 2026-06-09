@@ -15,5 +15,4 @@ import com.claex.crud.Entity.CadastroEntity;
 public interface CadastroRepository extends JpaRepository<CadastroEntity, Long>{
 
     Optional<CadastroEntity> findByNome(String nome);
-    
 }
