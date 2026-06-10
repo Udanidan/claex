@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>claex</title>
+</head>
+
+<header>
+   <div id="side-menu">
+    <div class="bars">
+        <div class="menu-bar"></div>
+        <div class="menu-bar"></div>
+        <div class="menu-bar"></div>
+    </div>
+
+    <a href="index.html" class="side-link">🏠 Início</a>
+    <a href="form_login.html?tipo=entrar" class="side-link">🔑 Login</a>
+    <a href="listar_sala.html" class="side-link">📚 Salas</a>
+    <a href="form_nova_sala.html" class="side-link">➕forma sala</a>
+    <a href="config_sala.html" class="side-link">⚙️config sala</a>
+           <a href="tabela_cadastros.html" class="side-link">tabela de profs</a>
+    <script>
+const bars = document.querySelector(".bars");
+const menu = document.querySelector("#side-menu");
+
+bars.addEventListener("click", () => {
+    menu.classList.toggle("open");
+});
+</script>
+</div>
+    
+    <img class="microscopico" src="https://img.icons8.com/?size=100&id=8113&format=png&color=000000" width="30px" alt="menu">
+    
+    <a href="listar_sala.html"><img style="width: 40px; border-radius: 50%; height: 40px;" src="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/197/2024/12/centro-paula-souza.jpg" alt="fotinha"></a>
+</header>
+
+<section id="painel">
+    <img src="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/197/2024/12/centro-paula-souza.jpg" alt="">
+    <article>
+        <h1>Olá</h1>
+        <p>Professores: </p>
+        <p>salas: </p>
+    </article>
+</section>
+
+<main>
+    <div class="link_nova_sala">
+        <a href="config_sala.html" id="link_alterar_sala"><button>configurações da sala</button></a>
+        <h2 id="nome_sala">Sala 1</h2>
+        <button onclick="alert('Essa função está em desenvolvimento')">alterar grade</button>
+    </div>
+    <section id="grade_aula">
+        <table>
+            <thead>
+                <th></th>
+                <th>segunda</th>
+                <th>terça</th>
+                <th>quarta</th>
+                <th>quinta</th>
+                <th>sexta</th>
+                <th>sabado</th>
+                <th>domingo</th>
+            </thead>
+            
+            <tbody>
+                <tr>
+                    <td>8:00</td>
+                    <td>Portugues</td>
+                    <td>matematica</td>
+                    <td>matematica</td>
+                    <td>matematica</td>
+                    <td>historia</td>
+                    <td>ciencia</td>
+                    <td>ciencia</td>
+                </tr>
+                <tr>
+                    <td>8:50</td>
+                    <td>Portugues</td>
+                    <td>matematica</td>
+                    <td>matematica</td>
+                    <td>matematica</td>
+                    <td>historia</td>
+                    <td>ciencia</td>
+                    <td>ciencia</td>
+                </tr>
+                <tr>
+                    <td>10:00</td>
+                    <td>Portugues</td>
+                    <td>matematica</td>
+                    <td>matematica</td>
+                    <td>matematica</td>
+                    <td>historia</td>
+                    <td>ciencia</td>
+                    <td>ciencia</td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </section>
+</main>
+<footer>
+    <div class="footer-content">
+        <div class="footer-brand">
+            CLAEX
+        </div>
+        <div class="footer-links">
+            <div class="footer-col">
+                <h4>Sobre</h4>
+                <a href="#">Quem Somos</a>
+                <a href="#">Contato</a>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="#">Termos de Uso</a>
+                <a href="#">Política de Privacidade</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2025 CLAEX. Todos os direitos reservados.
+    </div>
+    <link rel="stylesheet" href="css/style.css">
+</footer>
+
+
+<script>
+    async function injetarSalaNaGrade(){
+        const paramns = new URLSearchParams(window.location.search);
+        const id = paramns.get('id');
+        const buscarSala = await fetch(`/salas/${id}`);
+        console.log(buscarSala)
+        const sala = await buscarSala.json();
+        console.log(sala)
+
+        console.log(id)
+        let a = document.getElementById("link_alterar_sala");
+        let h2 = document.getElementById("nome_sala");
+
+        a.href = `config_sala.html?id=${sala.id_sala}`;
+        h2.innerHTML = sala.nome_sala;
+    };
+    injetarSalaNaGrade();
+</script>

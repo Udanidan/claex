@@ -36,22 +36,108 @@ bars.addEventListener("click", () => {
 </script>
 </div>
     
-<div id="form_nova_sala">
-<article class="flex_colunm">
-    <label>Nome da sala: <input type="text" value="sala 1"></label><br>
-    <label>Duração de uma aula: <input type="text"></label><br>
-    <label>Duração do intervalo: <input type="text"></label>
+<form id="form_nova_sala">
+    <article class="flex_colunm">
+        <label>Nome da sala: <input type="text" id="nome" placeholder="Nome da sala"></label>
+        <label>Duração de uma aula: <input type="text" id="duracao_aula" placeholder="50"></label>
+        <label>Duração do intervalo: <input type="text" id="duracao_intervalo" placeholder="20"></label>
+        <label>Hora que começa a aula <input type="time" id="inicio_aula"></label>
+        <label>Quantidade de aulas por dia<input type="number" id="quant_aulas" placeholder="6"></label>
     </article>
     <article>
         <div>
-            <h3>adcionar matéria</h3>
-            <label>Matéria: <input type="text"></label>
-            <label>Professor: <input type="text"></label>
+            <h3 onclick="addMateria()">adicionar matéria +</h3>
+            <div id="aulas">
+            <!-- <label>Matéria: <input type="text"></label>
+            <label>Professor: <input type="text"></label> -->
+            </div>
+
+            <script>
+                async function addMateria(){
+                    const buscaMaterias = await fetch("/materias/listar");
+                    const materias = await buscaMaterias.json();
+                    
+                    const buscaProfessores = await fetch("/professores/listar");
+                    const professores = await buscaProfessores.json();
+
+                    let aulas = document.getElementById("aulas");
+                    aulas.innerHTML += `
+                    <div>
+                        <label>Matéria: 
+                            <select id="materia" placeholder="Escolha uma materia">
+                                <option value="" selected disable>Escolha uma materia</option>
+                        ${materias
+                            .map(materia => `
+                                <option value="${materia.id_materia}">
+                                    ${materia.nome_materia}
+                                </option>
+                            `)
+                            .join('')}
+                        </select></label>
+                        <label>Professor: 
+                            <select id="professor">
+                                <option value="null">Escolha um professor</option>
+                        ${professores
+                            .map(professor => `
+                                <option value="${professor.id_professor}">
+                                    ${professor.nome_professor}
+                                </option>
+                            `)
+                            .join('')}
+                        </select></label>
+                    </div>
+                    `;
+                }
+            </script>
         </div>
     </article>
     
-    <a href="listar_sala.html"><button type="button" class="submit">Atualizar sala</button></a>
-</div>
+    <button type="submit" class="submit">Atualizar sala</button>
+</form>
+<script>
+    const paramns = new URLSearchParams(window.location.search);
+    const id = paramns.get('id');
+    async function dadosAtualizarSala(){
+        const buscarSala = await fetch(`/salas/${id}`);
+        const sala = await buscarSala.json();
+    
+        document.getElementById("nome").value = sala.nome_sala;
+        document.getElementById("duracao_aula").value = sala.duracao_aula;
+        document.getElementById("duracao_intervalo").value = sala.duracao_intervalo;
+        document.getElementById("inicio_aula").value = sala.inicio_aula;
+        document.getElementById("quant_aulas").value = sala.quant_aula;
+    
+    };
+    dadosAtualizarSala();
+
+    document.getElementById("form_nova_sala").addEventListener("submit", async function(e) {
+        e.preventDefault();
+        const salaAtualizada = {
+            nome_sala: document.getElementById("nome").value,
+            duracao_aula: document.getElementById("duracao_aula").value,
+            duracao_intervalo: document.getElementById("duracao_intervalo").value,
+            inicio_aula: document.getElementById("inicio_aula").value,
+            quant_aula: document.getElementById("quant_aulas").value,
+        }
+
+        console.log(salaAtualizada)
+
+        let response = await fetch(`/salas/${id}`,{
+            method: "PUT",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(salaAtualizada)
+        });
+
+        if(response.ok){
+            alert("Sala atualizada com sucesso");
+            window.location.href = "listar_sala.html";
+        } else{
+            alert("ocorreu um erro tente novamente");
+        }
+    });
+</script>
 
 <footer>
     <div class="footer-content">
