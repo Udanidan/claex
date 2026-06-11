@@ -219,7 +219,7 @@
     async function listarCadastros() {
       const tabela = document.getElementById("tabelaCadastro");
       try {
-        const res = await fetch(API + "/listar");
+        const res = await fetch(API);
         if (!res.ok) throw new Error();
         const dados = await res.json();
         if (!dados.length) {

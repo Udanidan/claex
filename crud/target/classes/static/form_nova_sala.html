@@ -115,7 +115,9 @@ bars.addEventListener("click", () => {
                     duracao_intervalo: document.getElementById("duracao_intervalo").value,
                     inicio_aula: document.getElementById("inicio_aula").value,
                     quant_aula: document.getElementById("quant_aulas").value,
-                    id: document.getElementById("id_escola").value
+                    escola: {
+                        id: document.getElementById("id_escola").value
+                    }
                 }
 
                 if(id === ""){
@@ -137,6 +139,8 @@ bars.addEventListener("click", () => {
                                 id_professor: aula.querySelector(".professor").value
                             })
                         })
+
+                        console.log(materias)
 
                         const id_sala = await response.json();
 

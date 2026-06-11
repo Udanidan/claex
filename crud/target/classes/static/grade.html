@@ -47,7 +47,10 @@ bars.addEventListener("click", () => {
 
 <main>
     <div class="link_nova_sala">
-        <a href="config_sala.html" id="link_alterar_sala"><button>configurações da sala</button></a>
+        <div style="display: flex; gap: 5px;">
+            <a href="config_sala.html" id="link_alterar_sala"><button>configurações da sala</button></a>
+            <button onclick="apagarSala()"><img style="width: 40px;" src="https://img.icons8.com/?size=100&id=11650&format=png&color=FFFFFF" alt="apagar"></button>
+        </div>
         <h2 id="nome_sala">Sala 1</h2>
         <button onclick="alert('Essa função está em desenvolvimento')">alterar grade</button>
     </div>
@@ -130,11 +133,8 @@ bars.addEventListener("click", () => {
         const paramns = new URLSearchParams(window.location.search);
         const id = paramns.get('id');
         const buscarSala = await fetch(`/salas/${id}`);
-        console.log(buscarSala)
         const sala = await buscarSala.json();
-        console.log(sala)
 
-        console.log(id)
         let a = document.getElementById("link_alterar_sala");
         let h2 = document.getElementById("nome_sala");
 
@@ -142,4 +142,15 @@ bars.addEventListener("click", () => {
         h2.innerHTML = sala.nome_sala;
     };
     injetarSalaNaGrade();
+    async function apagarSala(){
+        const paramns = new URLSearchParams(window.location.search);
+        const id = paramns.get('id');
+        if(confirm("Deseja deletar a sala?")){
+            const response = await fetch(`/salas/${id}`, {method: "DELETE"});
+            if(response.ok){
+                alert("sala deletada com sucesso");
+                window.location.href = "listar_sala.html";
+            }
+        }
+    }
 </script>

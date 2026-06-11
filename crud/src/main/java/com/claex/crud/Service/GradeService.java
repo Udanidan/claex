@@ -17,6 +17,10 @@ import java.util.Random;
 public class GradeService {
     @Autowired
     private GradeRepository repository;
+    @Autowired
+    private SalaService salaService;
+    @Autowired
+    private AulaService aulaService;
     
     public List<GradeEntity> listarTodos() {
         return repository.findAll();
@@ -86,7 +90,6 @@ public class GradeService {
     }
 
     public List<List<List<AulaEntity>>> buscarGradesEscola(Long id_sala){
-        SalaService salaService = new SalaService();
         List<List<List<AulaEntity>>> gradesExistentes = new ArrayList<>();
         List<SalaEntity> salas = salaService.BuscarPorEscola(salaService.buscarPorId(id_sala).getEscola().getId());
         for(SalaEntity sala: salas){
@@ -194,12 +197,10 @@ public class GradeService {
         return avancarGeracao(criarGrade(materias, quantAulas), gradesExistentes, materias, quantGeracoes, quantIndv);
     }
 
-    public void salvarGrade(List<List<AulaEntity>> grade){
-        AulaService aula = new AulaService();
-        
+    public void salvarGrade(List<List<AulaEntity>> grade){        
         for(int dia = 0; dia<grade.size(); dia++){
             for(int periodo = 0; periodo<grade.get(dia).size(); periodo++){
-                aula.salvar(grade.get(dia).get(periodo));
+                aulaService.salvar(grade.get(dia).get(periodo));
             }
         }
     }
