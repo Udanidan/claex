@@ -1,8 +1,5 @@
 package com.claex.crud.Controller;
 
-import com.claex.crud.Entity.SalaEntity;
-import com.claex.crud.Service.SalaService;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +11,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.claex.crud.Entity.SalaEntity;
+import com.claex.crud.Service.SalaService;
 
 
 @RestController

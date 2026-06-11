@@ -66,32 +66,33 @@ bars.addEventListener("click", () => {
                             const professores = await buscaProfessores.json();
 
                             let aulas = document.getElementById("aulas");
-                            aulas.innerHTML += `
-                            <div>
+                            
+                            aulas.insertAdjacentHTML('beforeend',`
+                            <div class="aulas">
                                 <label>Matéria: 
-                                    <select id="materia" placeholder="Escolha uma materia">
+                                    <select class="materia" placeholder="Escolha uma materia">
                                         <option value="" selected disable>Escolha uma materia</option>
                                 ${materias
                                     .map(materia => `
-                                        <option value="${materia.id_materia}">
+                                        <option value=${materia.id_materia}>
                                             ${materia.nome_materia}
                                         </option>
                                     `)
                                     .join('')}
                                 </select></label>
                                 <label>Professor: 
-                                    <select id="professor">
+                                    <select class="professor">
                                         <option value="null">Escolha um professor</option>
                                 ${professores
                                     .map(professor => `
-                                        <option value="${professor.id_professor}">
+                                        <option value=${professor.id_professor}>
                                             ${professor.nome_professor}
                                         </option>
                                     `)
                                     .join('')}
                                 </select></label>
                             </div>
-                            `;
+                            `);
                         }
                     </script>
                     
@@ -108,7 +109,6 @@ bars.addEventListener("click", () => {
 
                 const id = document.getElementById("id").value
 
-                console.log(id)
                 const sala = {
                     nome_sala: document.getElementById("nome").value,
                     duracao_aula: document.getElementById("duracao_aula").value,
@@ -117,8 +117,6 @@ bars.addEventListener("click", () => {
                     quant_aula: document.getElementById("quant_aulas").value,
                     id: document.getElementById("id_escola").value
                 }
-                console.log(sala)
-                console.log(id==="")
 
                 if(id === ""){
                     const response = await fetch(api, {
@@ -130,18 +128,42 @@ bars.addEventListener("click", () => {
                     });
                     if(response.status === 200){
                         alert("Sala criada com sucesso");
-                        window.location.href = "listar_sala.html";
+
+                        let materias = [];
+                        let aulas = document.querySelectorAll(".aulas");
+                        aulas.forEach((aula) => {
+                            materias.push({
+                                id_materia: aula.querySelector(".materia").value,
+                                id_professor: aula.querySelector(".professor").value
+                            })
+                        })
+
+                        const id_sala = await response.json();
+
+                        const responseGrade = await fetch(`/grade/gerargrade/${id_sala.id_sala}`, {
+                            method: "POST",
+                            headers: {
+                                "Content-type": "application/json"
+                            },
+                            body: JSON.stringify(materias)
+                        });
+
+                        console.log(await responseGrade);
+                        console.log(await responseGrade.json());
+                        if(responseGrade.ok){
+                            alert("grade criada com sucesso");
+                        } else{
+                            alert("Erro ao criar grade");
+                        }
+
+                        <!-- window.location.href = "listar_sala.html"; -->
                     } else {
                         alert("Ocorreu um erro, tente novamente")
                     }
                 }
 
-                let materias = [];
-                let aulas = document.getElementById("aulas");
-                materias += {
-                    "id_materia": aulas.children[0],
-                    "id_professor": aulas.children[1]
-                }
+
+
             })
         </script>
     </section>
