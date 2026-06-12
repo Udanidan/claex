@@ -59,6 +59,7 @@ public class GradeService {
         List<AulaEntity> mats = new ArrayList<>(materias);
         List<List<AulaEntity>> grade = new ArrayList<>();
         Random random = new Random();
+        AulaEntity aulaVazia = new AulaEntity();
 
         // i vai de um a 5 representando dias da semana, pode ser alterado para uma variavel
         for(int i = 0; i < 5; i++){
@@ -67,6 +68,8 @@ public class GradeService {
                 if(!mats.isEmpty()) {
                     int aleatorio = random.nextInt(mats.size());
                     dia.add(mats.remove(aleatorio));
+                } else{
+                    dia.add(aulaVazia);
                 }
             }
             grade.add(dia);
@@ -78,9 +81,9 @@ public class GradeService {
         GradeEntity entity = buscarPorId(id);
         int quantAulas = entity.getSala().getQuant_aula();
         // setado como 5 pensando em dias da semana, porem pode ser uma variavel
-        List<List<AulaEntity>> grade = new ArrayList<>(Collections.nCopies(5, Collections.nCopies(quantAulas, null)));
-        AulaService service = new AulaService();
-        List<AulaEntity> aulas = service.buscarPorGrade(id);
+        AulaEntity aulaVazia = new AulaEntity();
+        List<List<AulaEntity>> grade = new ArrayList<>(Collections.nCopies(5, Collections.nCopies(quantAulas, aulaVazia)));
+        List<AulaEntity> aulas = aulaService.buscarPorGrade(id);
 
         for(AulaEntity aula : aulas){
             grade.get(aula.getDia()).set(aula.getPeriodo(), aula);
@@ -172,12 +175,20 @@ public class GradeService {
 
     public List<List<AulaEntity>> avancarGeracao(List<List<AulaEntity>> gradeAnalisada, List<List<List<AulaEntity>>> gradesExistentes, List<AulaEntity> materias, int quantGeracoes, int quantIndv){
         List<List<AulaEntity>> melhorIndv = new ArrayList<>(gradeAnalisada);
+        for(var dia: melhorIndv){
+            for(var i: dia){
+                System.out.println(i.getId_materia());
+            }
+            System.out.println("------------");
+        }
+        System.out.println("fim");
         List<List<List<AulaEntity>>> listaIndv = new ArrayList<>();
-        int melhorScore = validarGrade(gradeAnalisada, gradesExistentes, materias);
+        int melhorScore = validarGrade(melhorIndv, gradesExistentes, materias);
 
         for(int i=0; i<quantGeracoes; i++){
             for(int ind=0;ind<quantIndv;ind++){
-                listaIndv.add(mutarGrade(melhorIndv));
+                List<List<AulaEntity>> gradeMutada = mutarGrade(melhorIndv);
+                listaIndv.add(gradeMutada);
             }
             for(List<List<AulaEntity>> indv: listaIndv){
                 int indvScore = validarGrade(indv, gradesExistentes, materias);
@@ -187,6 +198,14 @@ public class GradeService {
                         melhorIndv.add(dia);
                     }
                     melhorScore=indvScore;
+
+                    for(var dia: melhorIndv){
+                        for(var a: dia){
+                            System.out.println(a.getId_materia());
+                        }
+                        System.out.println("------------");
+                    }
+                    System.out.println(melhorScore);
                 }
             }
         }
@@ -197,21 +216,22 @@ public class GradeService {
         return avancarGeracao(criarGrade(materias, quantAulas), gradesExistentes, materias, quantGeracoes, quantIndv);
     }
 
-    public void salvarGrade(List<List<AulaEntity>> grade){        
+    public void salvarGrade(List<List<AulaEntity>> grade, GradeEntity gradeEntity){
         for(int dia = 0; dia<grade.size(); dia++){
             for(int periodo = 0; periodo<grade.get(dia).size(); periodo++){
+                grade.get(dia).get(periodo).setDia(dia);
+                grade.get(dia).get(periodo).setPeriodo(periodo);
+                grade.get(dia).get(periodo).setGrade(gradeEntity);
                 aulaService.salvar(grade.get(dia).get(periodo));
             }
         }
     }
 
     public void atualizarGrade(List<List<AulaEntity>> grade){
-        AulaService aula = new AulaService();
-        
         for(int dia = 0; dia<grade.size(); dia++){
             for(int periodo = 0; periodo<grade.get(dia).size(); periodo++){
                 AulaEntity aulaEntity = grade.get(dia).get(periodo);
-                aula.atualizar(aulaEntity.getId_aula(), aulaEntity);
+                aulaService.atualizar(aulaEntity.getId_aula(), aulaEntity);
             }
         }
     }

@@ -135,8 +135,8 @@ bars.addEventListener("click", () => {
                         let aulas = document.querySelectorAll(".aulas");
                         aulas.forEach((aula) => {
                             materias.push({
-                                id_materia: aula.querySelector(".materia").value,
-                                id_professor: aula.querySelector(".professor").value
+                                id_materia: {id_materia: aula.querySelector(".materia").value},
+                                id_professor: {id_professor: aula.querySelector(".professor").value}
                             })
                         })
 
@@ -152,8 +152,6 @@ bars.addEventListener("click", () => {
                             body: JSON.stringify(materias)
                         });
 
-                        console.log(await responseGrade);
-                        console.log(await responseGrade.json());
                         if(responseGrade.ok){
                             alert("grade criada com sucesso");
                         } else{

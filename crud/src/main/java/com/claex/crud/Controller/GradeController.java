@@ -1,6 +1,6 @@
 package com.claex.crud.Controller;
 
-import java.util.ArrayList;
+// import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.claex.crud.Dto.AulaDTO;
+// import com.claex.crud.Dto.AulaDTO;
 import com.claex.crud.Entity.AulaEntity;
 import com.claex.crud.Entity.GradeEntity;
 import com.claex.crud.Service.GradeService;
@@ -31,20 +31,27 @@ public class GradeController {
     }
 
     @PostMapping("/gerargrade/{id_sala}")
-    public void gerarGrade(@PathVariable Long id_sala, @RequestBody List<AulaDTO> materiasDTO){
+    public void gerarGrade(@PathVariable Long id_sala, @RequestBody List<AulaEntity> materias){
         GradeEntity grade = new GradeEntity();
         grade.setSala(sala.buscarPorId(id_sala));
         GradeEntity gradeEntity = service.salvar(grade);
         List<List<List<AulaEntity>>> gradesExistentes = service.buscarGradesEscola(gradeEntity.getSala().getId_sala());
 
-        List<AulaEntity> materias = new ArrayList<>();
-        for(int i = 0; i<materiasDTO.size(); i++){
-            materias.add(materiasDTO.get(i).gerarAula());
-        }
+        // List<AulaEntity> materias = new ArrayList<>();
+        // for(int i = 0; i<materiasDTO.size(); i++){
+        //     materias.add(materiasDTO.get(i).gerarAula());
+        // }
         
         List<List<AulaEntity>> gradeFinalizada = service.gerarGrade(gradesExistentes, materias, 50, 50, gradeEntity.getSala().getQuant_aula());
 
-        service.salvarGrade(gradeFinalizada);
+        for(var dia:gradeFinalizada){
+            for(var i: dia){
+                System.out.println(i.getId_materia());
+            }
+            System.out.println("------------");
+        }
+
+        service.salvarGrade(gradeFinalizada, gradeEntity);
         // return gradeFinalizada;
     }
 }
